@@ -1,0 +1,38 @@
+QMainWindow {
+    border-image: url("src/image/bg.jpg") 0 0 0 0 stretch stretch;
+    z-index: 0;
+}
+
+QLabel {
+    color: black;
+    font-size: 55px;
+}
+
+QPushButton {
+    font-size: 15px;
+    background-color: black;
+    color: aqua;
+    border: 1px solid white;
+    border-radius: 15px 5px 15px;
+}
+
+/*
+QLabel#planeLabel {
+    border-image: url("assets/image/fuel_calculator/private.jpg") 0 0 0 0 stretch stretch;
+    border: 1px solid black;
+    border-radius: 20px 20px;
+
+}
+
+QLabel#planeSel {
+    color: black;
+    font-size: 25px;
+
+}
+
+QLabel#dimlabel {
+    color: #1c24c1;
+    font-size: 50px;
+    border-radius: 30px 30px;
+}
+
