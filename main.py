@@ -4,44 +4,88 @@ from PyQt5.QtWidgets import QPushButton, QApplication, QMainWindow, QLabel, QSta
     QWidget, QListWidget, QStackedLayout
 import sys
 
-
-from src.pages.iterpow import IPWindow
+from src.pages.config import IVWindow
+from src.pages.start import StartWin
 from src.pages.home import Main
+from src.lang.language import Language
 
 
-class Pjmat(QMainWindow):
+class GUI(QMainWindow):
+
     def __init__(self, parent=None):
-        super(Pjmat, self).__init__(parent)
 
+        super(GUI, self).__init__(parent)
+        self.language = Language("fr")
+        self.page = None
         self.icon = QtGui.QIcon()
-        self.icon.addPixmap(QtGui.QPixmap('src/image/bg.jpg'), QtGui.QIcon.Selected, QtGui.QIcon.On)
+        self.icon.addPixmap(QtGui.QPixmap('src/image/maths.png'), QtGui.QIcon.Selected, QtGui.QIcon.On)
         self.setWindowIcon(self.icon)
-        QFontDatabase.addApplicationFont('src/font/NeoEuler.ttf')
+
+        QtGui.QFontDatabase.addApplicationFont('./src/font/simplicity.ttf')
 
         self.uiMainWindow = Main()
-        #self.uiFuel = IPWindow()
-        #self.uiFp = FlightPlan()
-        #self.uiDimension = Dimension()
+        self.ui_start = StartWin()
+        self.ui_conf = IVWindow()
         self.startMainWindow()
 
     def startMainWindow(self):
+        '''
+        :return: the selection menu window
+        '''
+        self.uiMainWindow.lang = self.language.get_lang()
         self.uiMainWindow.setupUI(self)
-        self.uiMainWindow.ipBt.clicked.connect(self.startIterPow)
+        # Connect buttons to the page (ivPage, ipPage ...)
+        self.uiMainWindow.start_bt.clicked.connect(self.load_start)
+        self.uiMainWindow.conf_bt.clicked.connect(self.load_config)
+        self.uiMainWindow.language.clicked.connect(self.change_language)
+        self.page = "main"
         self.show()
 
-    def startIterPow(self):
-        self.uiFuel.setupUI(self)
-        self.uiFuel.homeBt.clicked.connect(self.startMainWindow)
-        self.uiFuel.ipbt.clicked.connect(self.startIp)
+    def load_start(self):
+        '''
+        :return: the equation selector menu
+        '''
+
+        self.ui_start.lang = self.language.get_lang()
+        self.ui_start.setupUI(self)
+        self.ui_start.home_bt.clicked.connect(self.startMainWindow)
+        self.ui_start.language.clicked.connect(self.change_language)
+        self.page = "start"
         self.show()
 
-    
+    def load_config(self):
+        '''
+        :return: the configuration menu
+        '''
+
+        self.ui_conf.setupUI(self)
+        #self.ui_conf.homeBt.clicked.connect(self.startMainWindow)
+        self.page = "config"
+        self.show()
+
+    def change_language(self):
+        '''
+        :return: the corresponding dictionary of the selected language.
+        '''
+
+        if self.page == "main":
+            if self.uiMainWindow.lang["language"] == "fr":
+                self.language = Language("en")
+            else:
+                self.language = Language("fr")
+            self.startMainWindow()
+        else:
+            if self.ui_start.lang["language"] == "fr":
+                self.language = Language("en")
+            else:
+                self.language = Language("fr")
+            self.load_start()
 
 
 if __name__ == '__main__':
     font = QFont('aero')
     app = QApplication(sys.argv)
     app.setStyle('Window')
-    app.setStyleSheet(open('./src/css/main.css').read())
-    window = Pjmat()
+    app.setStyleSheet(open('src/css/main.qss').read())
+    window = GUI()
     sys.exit(app.exec_())

@@ -1,0 +1,29 @@
+{
+
+  "fr": {
+    "language": "fr",
+    "app-title": "Projet Optimisation - IPSA 2022",
+    "title": "Projet Opti",
+    "start": "Lancer",
+    "config": "Config",
+    "credit": "Credit",
+    "home": "menu",
+    "change-equation": "Changer equation",
+    "interval": "Intervalle",
+    "interval-entry": "Entrer une intervalle ex: 2-5"
+  },
+  "en": {
+    "language": "en",
+    "app-title": "Optimization Project - IPSA 2022",
+    "title": "Opti Project",
+    "start": "Start",
+    "config": "Config",
+    "credit": "Credit",
+    "home": "home",
+    "change-equation": "Change equation",
+    "interval": "Interval",
+    "interval-entry": "Enter a valid interval ex: 2-5"
+  }
+
+
+}
