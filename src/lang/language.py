@@ -8,5 +8,5 @@ class Language:
         self.lang = json.load(open("src/lang/lang.json"))
 
     def get_lang(self):
-        print(self.lang[self.lg])
+        #print(self.lang[self.lg])
         return self.lang[self.lg]

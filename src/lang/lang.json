@@ -9,6 +9,7 @@
     "credit": "Credit",
     "home": "menu",
     "change-equation": "Changer equation",
+    "change-method": "Choisir la methode",
     "interval": "Intervalle",
     "interval-entry": "Entrer une intervalle ex: 2-5"
   },
@@ -21,6 +22,7 @@
     "credit": "Credit",
     "home": "home",
     "change-equation": "Change equation",
+    "change-method": "Choose a method",
     "interval": "Interval",
     "interval-entry": "Enter a valid interval ex: 2-5"
   }
