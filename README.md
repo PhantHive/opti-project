@@ -5,13 +5,13 @@
 <img src="./src/image/app.png">
 
 <h2 align="center"> 
-  | Simple Math App |
+  | Math Application |
 </h2>
 
 [![School][school-shield]][school-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
-![Python](https://img.shields.io/badge/Python-3.9-brightgreen?&style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.10-brightgreen?&style=for-the-badge)
 </div>
 
 
@@ -34,14 +34,14 @@ This app resolve a few optimization problems using numpy and pyqt5.
 > Supervised by Mr.Bletzecker (teacher at IPSA)
 > Borg Corentin (https://github.com/Tyhuki) ; Evan ; Wenceslas
 
-> Project Link: [https://github.com/PhantHive/opti-project](https://github.com/PhantHive/math_project/)
+> Project Link: [https://github.com/PhantHive/opti_project](https://github.com/PhantHive/opti_project/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/PhantHive/math_project.svg?style=for-the-badge
-[contributors-url]: https://github.com/PhantHive/math_project/graphs/contributors/
+[contributors-shield]: https://img.shields.io/github/contributors/PhantHive/opti_project.svg?style=for-the-badge
+[contributors-url]: https://github.com/PhantHive/opti_project/graphs/contributors/
 
-[issues-shield]: https://img.shields.io/github/issues/PhantHive/math_project.svg?style=for-the-badge
-[issues-url]: https://github.com/PhantHive/math_project/issues/
+[issues-shield]: https://img.shields.io/github/issues/PhantHive/opti_project.svg?style=for-the-badge
+[issues-url]: https://github.com/PhantHive/opti_project/issues/
 
 [school-shield]: https://img.shields.io/badge/School-IPSA-cyan?&style=for-the-badge
 [school-url]: https://www.ipsa.fr/
