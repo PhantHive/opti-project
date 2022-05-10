@@ -60,8 +60,9 @@ class StartWin(object):
         self.interval.resize(250, 45)
 
         self.equation = QLabel(self.start_widgets)
+        self.equation.resize(250, 45)
         self.equation.setText("Equation: ")
-        self.equation.setProperty("type", 1)
+        self.equation.setProperty("type", 2)
 
         shadow = QGraphicsDropShadowEffect()
         shadow.setColor(Qt.black)
@@ -73,19 +74,28 @@ class StartWin(object):
         self.change_eq.setText(self.lang["change-equation"])
         self.change_eq.setProperty("type", 2)
 
+        self.method = QPushButton(self.start_widgets)  # change equation
+        self.method.resize(250, 45)
+        self.method.setText(self.lang["change-method"])
+        self.method.setProperty("type", 2)
+
         self.interval.setGraphicsEffect(shadow)
         self.change_eq.setGraphicsEffect(shadow)
+        self.method.setGraphicsEffect(shadow)
 
     def result_widgets(self):
         # Result
         pass
 
     def move_widgets(self):
+
         self.language.move(int(self.width * 0.95), int(self.height * 0.015))
-        self.change_eq.move(int(self.width * 0.1), int(self.height * 0.1))
-        self.interval.move(int(self.width * 0.5), int(self.height * 0.3))
-        self.equation.move(int(self.width * 0.1), int(self.height * 0.5))
+        self.change_eq.move(int(self.width * 0.1), int(self.height * 0.15))
+        self.interval.move(int(self.width * 0.5), int(self.height * 0.35))
+        self.equation.move(int(self.width * 0.1), int(self.height * 0.55))
+        self.method.move(int(self.width * 0.5), int(self.height * 0.75))
         self.home_bt.move(int(self.width * 0.85), int(self.height * 0.9))
 
     def calculate(self):
         pass
+

@@ -9,13 +9,22 @@ QLabel {
     color: #ffffff;
     font-family: simplicity, serif;
     font-size: 55px;
-
 }
 
 QLabel[type="1"]{
 
     font-size: 30px;
 }
+
+QLabel[type="2"]{
+    font-size: 20px;
+    color: #ffffff;
+    border: 2px solid;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: orange;
+    border-radius: 5%;
+}
+
 
 
 
@@ -62,6 +71,7 @@ QPushButton[type="1"]:hover {
 
 QPushButton[type="2"]{
     color: #ffffff;
+    font: 15px bold;
     border: 2px solid;
     background-color: rgba(0, 0, 0, 0.5);
     border-color: orange;
@@ -69,17 +79,15 @@ QPushButton[type="2"]{
 }
 
 QPushButton:hover {
-
     padding: 1.4rem 5.2rem;
-    font: 20px bold;
     text-transform: uppercase;
     background: transparent;
     color: orange;
-
 }
 
 QPushButton[type="2"]:hover{
     color: #ffffff;
+    font: 20px bold;
     border: 2px solid;
     background-color: rgba(0, 0, 0, 0.85);
     border-color: #ffffff;
