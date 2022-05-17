@@ -11,7 +11,9 @@
     "change-equation": "Changer equation",
     "change-method": "Choisir la methode",
     "interval": "Intervalle",
-    "interval-entry": "Entrer une intervalle ex: 2-5"
+    "intervalx-entry": "Entrer une intervalle de x ex: 2-5",
+    "intervaly-entry": "Entrer une intervalle de y ex: 2-5",
+    "un" : "A definir"
   },
   "en": {
     "language": "en",
@@ -24,7 +26,9 @@
     "change-equation": "Change equation",
     "change-method": "Choose a method",
     "interval": "Interval",
-    "interval-entry": "Enter a valid interval ex: 2-5"
+    "intervalx-entry": "Enter a valid interval of x ex: 2-5",
+    "intervaly-entry": "Enter a valid interval of y ex: 2-5",
+    "un" : "A definir"
   }
 
 
