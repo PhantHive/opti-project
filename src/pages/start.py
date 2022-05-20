@@ -84,10 +84,12 @@ class StartWin(object):
         self.method.setText(self.lang["change-method"])
         self.method.setProperty("type", 2)
 
+
         self.intervalx.setGraphicsEffect(shadow)
         self.intervaly.setGraphicsEffect(shadow)
         self.change_eq.setGraphicsEffect(shadow)
         self.method.setGraphicsEffect(shadow)
+        
     def start_change_equ(self):
         pass
 
@@ -99,9 +101,11 @@ class StartWin(object):
 
         self.language.move(int(self.width * 0.95), int(self.height * 0.015))
         self.change_eq.move(int(self.width * 0.1), int(self.height * 0.15))
+
         self.intervalx.move(int(self.width * 0.1), int(self.height * 0.5))
         self.intervaly.move(int(self.width * 0.1), int(self.height * 0.6))
         self.equation.move(int(self.width * 0.1), int(self.height * 0.30))
+
         self.method.move(int(self.width * 0.5), int(self.height * 0.75))
         self.home_bt.move(int(self.width * 0.85), int(self.height * 0.9))
 
