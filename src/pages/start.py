@@ -4,14 +4,8 @@ import numpy as np
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator
-from PyQt5.QtWidgets import (
-    QPushButton,
-    QLabel,
-    QWidget,
-    QLineEdit,
-    QComboBox,
-    QGraphicsDropShadowEffect,
-)
+from PyQt5.QtWidgets import (QComboBox, QGraphicsDropShadowEffect, QLabel,
+                             QLineEdit, QPushButton, QWidget)
 
 from src.canvas.Canvas import Canvas
 
