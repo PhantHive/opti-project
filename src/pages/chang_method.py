@@ -129,7 +129,7 @@ class EquationWin(object):
         self.intervalx = QLineEdit(self.start_widgets)
         self.intervalx.setPlaceholderText(self.lang["intervalx-entry"])
         self.intervalx.resize(250, 45)
-        
+
         self.intervaly = QLineEdit(self.start_widgets)
         self.intervaly.setPlaceholderText(self.lang["intervaly-entry"])
         self.intervaly.resize(250, 45)
