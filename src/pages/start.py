@@ -34,10 +34,10 @@ class StartWin(object):
                              self.width, self.height)
         StartWin.setFixedSize(self.width, self.height)
 
-        StartWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"])
+        StartWin.setWindowTitle(
+            self.lang["app-title"] + " \ " + self.lang["start"])
 
         self.start_widgets = QWidget(StartWin)
-
 
         self.language = QPushButton(self.start_widgets)
         self.language.setText(self.lang["language"])
@@ -59,7 +59,7 @@ class StartWin(object):
         self.intervalx = QLineEdit(self.start_widgets)
         self.intervalx.setPlaceholderText(self.lang["intervalx-entry"])
         self.intervalx.resize(250, 45)
-        
+
         self.intervaly = QLineEdit(self.start_widgets)
         self.intervaly.setPlaceholderText(self.lang["intervaly-entry"])
         self.intervaly.resize(250, 45)
@@ -84,12 +84,11 @@ class StartWin(object):
         self.method.setText(self.lang["change-method"])
         self.method.setProperty("type", 2)
 
-
         self.intervalx.setGraphicsEffect(shadow)
         self.intervaly.setGraphicsEffect(shadow)
         self.change_eq.setGraphicsEffect(shadow)
         self.method.setGraphicsEffect(shadow)
-        
+
     def start_change_equ(self):
         pass
 
@@ -111,4 +110,3 @@ class StartWin(object):
 
     def calculate(self):
         pass
-

@@ -8,24 +8,25 @@ from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QComboBox, 
 
 from src.canvas.Canvas import Canvas
 
+
 class EquationWin(object):
-    def __init__(self): 
+    def __init__(self):
         self.screen = QtWidgets.QDesktopWidget().screenGeometry()
         self.width = int(self.screen.width() * 0.50)
         self.height = int(self.screen.height() * 0.55)
 
         self.onlyInt = QIntValidator()
         self.lang = None
-    
-    def setupUI(self,EquationWin):
+
+    def setupUI(self, EquationWin):
         EquationWin.setGeometry((self.screen.width() - self.width) // 2, (self.screen.height() - self.height) // 2,
-                             self.width, self.height)
+                                self.width, self.height)
         EquationWin.setFixedSize(self.width, self.height)
 
-        EquationWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["unk"])
+        EquationWin.setWindowTitle(
+            self.lang["app-title"] + " \ " + self.lang["unk"])
 
         self.start_widgets = QWidget(EquationWin)
-
 
         self.language = QPushButton(self.start_widgets)
         self.language.setText(self.lang["language"])
@@ -35,8 +36,8 @@ class EquationWin(object):
         self.move_widgets()
 
         EquationWin.setCentralWidget(self.start_widgets)
-        
-    def entry_widgets(self): 
+
+    def entry_widgets(self):
         self.home_bt = QPushButton(self.start_widgets)
         self.home_bt.setText(self.lang["home"])
 
@@ -47,31 +48,33 @@ class EquationWin(object):
         self.equa1.resize(250, 45)
         self.equa1.setText(self.lang["unk"])
         self.equa1.setProperty("type", 2)
-        
+
         self.equa2 = QPushButton(self.change_equation)  # change to equation 2
         self.equa2.resize(250, 45)
         self.equa2.setText(self.lang["unk"])
         self.equa2.setProperty("type", 2)
-        
-        self.equa3 = QPushButton(self.change_equation)  # change to equation 3 
+
+        self.equa3 = QPushButton(self.change_equation)  # change to equation 3
         self.equa3.resize(250, 45)
         self.equa3.setText(self.lang["unk"])
         self.equa3.setProperty("type", 2)
-        
-        self.equa4 = QPushButton(self.change_equation)  # change to equation 4 
+
+        self.equa4 = QPushButton(self.change_equation)  # change to equation 4
         self.equa4.resize(250, 45)
         self.equa4.setText(self.lang["unk"])
         self.equa4.setProperty("type", 2)
-        
+
         self.equa5 = QPushButton(self.change_equation)  # change to equation 5
         self.equa5.resize(250, 45)
         self.equa5.setText(self.lang["unk"])
         self.equa5.setProperty("type", 2)
+
     def return_start(self):
         pass
-    def change_equation(self, a ):
+
+    def change_equation(self, a):
         print(a)
-    
+
     """
 
 
