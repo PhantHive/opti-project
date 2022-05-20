@@ -22,7 +22,7 @@ def H_g(x1, x2):
 
 
 def Rosenbrock(x, y):
-    return (x - 1) ** 2 + 10 * (x**2 - y) ** 2
+    return (x - 1)**2 + 10 * (x**2 - y)**2
 
 
 def Ros_der(x, y):

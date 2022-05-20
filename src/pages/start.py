@@ -15,6 +15,7 @@ from src.canvas.Canvas import Canvas
 
 
 class StartWin(object):
+
     def __init__(self):
         """
         choose the equation to solve within a specific interval
@@ -42,7 +43,8 @@ class StartWin(object):
         )
         StartWin.setFixedSize(self.width, self.height)
 
-        StartWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"])
+        StartWin.setWindowTitle(self.lang["app-title"] + " \ " +
+                                self.lang["start"])
 
         self.start_widgets = QWidget(StartWin)
 

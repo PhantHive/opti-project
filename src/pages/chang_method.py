@@ -15,6 +15,7 @@ from src.canvas.Canvas import Canvas
 
 
 class EquationWin(object):
+
     def __init__(self):
         self.screen = QtWidgets.QDesktopWidget().screenGeometry()
         self.width = int(self.screen.width() * 0.50)
@@ -32,7 +33,8 @@ class EquationWin(object):
         )
         EquationWin.setFixedSize(self.width, self.height)
 
-        EquationWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["unk"])
+        EquationWin.setWindowTitle(self.lang["app-title"] + " \ " +
+                                   self.lang["unk"])
 
         self.start_widgets = QWidget(EquationWin)
 
