@@ -10,27 +10,27 @@ from mpl_toolkits.mplot3d import Axes3D
 
 
 def g(x1, x2):
-    return (x1**2 + x2**4 + 2*x2**2)
+    return x1**2 + x2**4 + 2 * x2**2
 
 
 def g_der(x1, x2):
-    return np.array([2*x1, 4*x2**3 + 4*x2])
+    return np.array([2 * x1, 4 * x2**3 + 4 * x2])
 
 
 def H_g(x1, x2):
-    return np.array([[2, 0], [0, 12*x2**2+4]])
+    return np.array([[2, 0], [0, 12 * x2**2 + 4]])
 
 
 def Rosenbrock(x, y):
-    return (x-1)**2 + 10*(x**2 - y)**2
+    return (x - 1) ** 2 + 10 * (x**2 - y) ** 2
 
 
 def Ros_der(x, y):
-    return np.array([40*x**3 + 2*x - 2 - 40*x*y, -20*x**2 + 20*y])
+    return np.array([40 * x**3 + 2 * x - 2 - 40 * x * y, -20 * x**2 + 20 * y])
 
 
 def H_Ros(x, y):
-    return np.array([[120*x**2 + 2 - 40*y, -40*x], [-40*x, 20]])
+    return np.array([[120 * x**2 + 2 - 40 * y, -40 * x], [-40 * x, 20]])
 
 
 def Surface(a, b, h, f):
@@ -59,7 +59,7 @@ def gradientPasFixe(x0, rho, tol, Nitermax, f_der):
     x_list = [x]
     while np.linalg.norm(f_der(x[0], x[1])) > tol and i < Nitermax:
         d = -f_der(x[0], x[1])
-        x += rho*d
+        x += rho * d
         i += 1
         x_list.append(x.copy())
     return (x, x_list, i)
@@ -74,20 +74,20 @@ def gradientPasOptimal(x0, rho, tol, Nitermax, Hf, f_der):
         d = -f_der(x[0], x[1])
         rho = rechercheDuPas(x, d, rho, 10**-8, 10**4, Hf, f_der)
 
-        x += rho*d
+        x += rho * d
         i += 1
         x_list.append(x)
     return (x, x_list, i)
 
 
 def rechercheDuPas(x, d, rho, tolR, maxIt, Hf, f_der):
-    rho_0 = 10*rho
+    rho_0 = 10 * rho
     j = 1
     while abs(rho - rho_0) > tolR and j < maxIt:
-        phi_p = d.T@f_der(x[0] + rho*d[0], x[1] + rho*d[1])
-        phi_s = d.T@Hf(x[0] + rho*d[0], x[1] + rho*d[1])@d
+        phi_p = d.T @ f_der(x[0] + rho * d[0], x[1] + rho * d[1])
+        phi_s = d.T @ Hf(x[0] + rho * d[0], x[1] + rho * d[1]) @ d
         rho_0 = rho
-        rho = rho - phi_p/phi_s
+        rho = rho - phi_p / phi_s
         j += 1
     return rho
 

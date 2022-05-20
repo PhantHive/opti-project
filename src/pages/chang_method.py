@@ -4,7 +4,14 @@ import numpy as np
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator
-from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QComboBox, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import (
+    QPushButton,
+    QLabel,
+    QWidget,
+    QLineEdit,
+    QComboBox,
+    QGraphicsDropShadowEffect,
+)
 
 from src.canvas.Canvas import Canvas
 
@@ -19,12 +26,15 @@ class EquationWin(object):
         self.lang = None
 
     def setupUI(self, EquationWin):
-        EquationWin.setGeometry((self.screen.width() - self.width) // 2, (self.screen.height() - self.height) // 2,
-                                self.width, self.height)
+        EquationWin.setGeometry(
+            (self.screen.width() - self.width) // 2,
+            (self.screen.height() - self.height) // 2,
+            self.width,
+            self.height,
+        )
         EquationWin.setFixedSize(self.width, self.height)
 
-        EquationWin.setWindowTitle(
-            self.lang["app-title"] + " \ " + self.lang["unk"])
+        EquationWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["unk"])
 
         self.start_widgets = QWidget(EquationWin)
 

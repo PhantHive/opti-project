@@ -4,17 +4,23 @@ import numpy as np
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator
-from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QComboBox, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import (
+    QPushButton,
+    QLabel,
+    QWidget,
+    QLineEdit,
+    QComboBox,
+    QGraphicsDropShadowEffect,
+)
 
 from src.canvas.Canvas import Canvas
 
 
 class StartWin(object):
-
     def __init__(self):
-        '''
+        """
         choose the equation to solve within a specific interval
-        '''
+        """
 
         self.screen = QtWidgets.QDesktopWidget().screenGeometry()
         self.width = int(self.screen.width() * 0.50)
@@ -30,12 +36,15 @@ class StartWin(object):
         self.equation = None
 
     def setupUI(self, StartWin):
-        StartWin.setGeometry((self.screen.width() - self.width) // 2, (self.screen.height() - self.height) // 2,
-                             self.width, self.height)
+        StartWin.setGeometry(
+            (self.screen.width() - self.width) // 2,
+            (self.screen.height() - self.height) // 2,
+            self.width,
+            self.height,
+        )
         StartWin.setFixedSize(self.width, self.height)
 
-        StartWin.setWindowTitle(
-            self.lang["app-title"] + " \ " + self.lang["start"])
+        StartWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"])
 
         self.start_widgets = QWidget(StartWin)
 
