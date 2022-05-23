@@ -58,13 +58,13 @@ def gradientPasFixe(x0,rho,tol,Nitermax,f_der):
 def gradientPasOptimal(x0,rho,tol,Nitermax,Hf,f_der):
     
     i = 0
-    x = x0
+    x = x0.copy()
     x_list = [x]
     while np.linalg.norm(f_der(x[0],x[1])) > tol and i < Nitermax : 
         d = -f_der(x[0],x[1])
-        rho = rechercheDuPas(x, d, rho, 10**-8, 10**4, Hf, f_der)
+        rho_z = rechercheDuPas(x, d, rho, 10**-8, 10**4, Hf, f_der)
 
-        x += rho*d
+        x += rho_z*d
         i += 1
         x_list.append(x)
     return (x,x_list,i)
@@ -79,17 +79,75 @@ def rechercheDuPas(x,d,rho,tolR,maxIt,Hf,f_der):
         j += 1
     return rho
 
-def gradientPreconditionne(x0,rho,tol,Nitermax,H_f,f_der,f):
-    pass
+def gradientPreconditionne(x0,rho,tol,Nitermax,H_f,f_der):
+    def Dj(H_f,x) : 
+        H = H_f(x[0],x[1])
+        d = np.array([[H[0,0],0],[0,H[1,1]]])
+        return d
+    i = 0
+    x = x0.copy()
+    a = tol*2
+    x_list = list()
+    while a > tol and i < Nitermax :
+        Di = Dj(H_f,x)
+        di = np.linalg.inv(Di)@(-f_der(x[0],x[1]))
+        rho_z = rechercheDuPas(x, di, rho, 10**-8, 10**4, H_f, f_der)            
+        x += rho_z*di
+        i += 1
+        x_list.append(x)
+        a = np.linalg.norm(f_der(x[0],x[1]))
+    return (x,x_list,i)
+
+def gradient_methode_newton(x0,rho,tol,Nitermax,H_f,f_der):
+    i = 0
+    x = x0.copy()
+    a = tol*2
+    x_list = list()
+    while a > tol and i < Nitermax :
+        Di = H_f(x[0],x[1])
+        di = np.linalg.inv(Di)@(-f_der(x[0],x[1]))
+        rho_z = rechercheDuPas(x, di, rho, 10**-8, 10**4, H_f, f_der)            
+        x += rho_z*di
+        i += 1
+        x_list.append(x)
+        a = np.linalg.norm(f_der(x[0],x[1]))
+    return (x,x_list,i)
+
+
+def gradient_meth_quasi_newton(x0,rho,tol,Nitermax,H_f,f_der):
+    i = 0
+    x = x0.copy()
+    a = np.array([1,1])
+    x_list = list()
+    Di = np.eye(2)
+    while np.linalg.norm(a) > tol and i < Nitermax :
+        di = np.linalg.inv(Di)@(-f_der(x[0],x[1]))
+        rho_z = rechercheDuPas(x, di, rho, 10**-8, 10**4, H_f, f_der)   
+        s = rho_z*di         
+        x += s
+        y = f_der(x[0],x[1]) - a
+        # print(Di)
+        # print(s.T@Di@s)
+        # print(Di@s@(s.T@Di))
+        Di = Di - (Di@s@(s.T@Di))/(s.T@Di@s) + (y@y.T)/(y.T@s)
+        
+        a = f_der(x[0],x[1])
+        
+        i += 1
+        x_list.append(x)
+
+    return (x,x_list,i)
 
 
 
-Surface(-3,3,0.1,g)
-Lignes_niveau(-3, 3, 0.1, g, [i for i in range(12)])
+
+# Surface(-3,3,0.1,g)
+# Lignes_niveau(-3, 3, 0.1, g, [i for i in range(12)])
 x0_1 = np.array([1.2,1.2]).T
 pas_1 = 10**-2
 Sol1 = gradientPasFixe(x0_1, pas_1, 10**-4,10**5,g_der)
-Sol2 = gradientPasOptimal(x0_1, pas_1, 10**-4,10**5,H_g,g_der)
+print(x0_1)
+Sol2 = gradient_meth_quasi_newton(x0_1, pas_1, 10**-4,10**5,H_g,g_der)
 print(Sol1[0],Sol1[2])
 print(Sol2[0],Sol2[2])
 

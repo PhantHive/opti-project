@@ -96,7 +96,7 @@ class StartWin(object):
         self.method.setGraphicsEffect(shadow)
         
     def start_change_equ(self):
-        self.ui_ch_eq.lang = self.lang.get_lang()
+        self.ui_ch_eq.lang = self.lang
         self.ui_ch_eq.setupUI(self)
         self.ui_ch_eq.home_bt.clicked.connect(self.startMainWindow)
         self.ui_ch_eq.language.clicked.connect(self.change_language)
