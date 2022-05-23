@@ -7,6 +7,7 @@ from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QComboBox, QGraphicsDropShadowEffect
 
 from src.canvas.Canvas import Canvas
+from src.pages.chang_method import EquationWin
 
 
 class StartWin(object):
@@ -45,6 +46,8 @@ class StartWin(object):
         self.entry_widgets()
         self.result_widgets()
         self.move_widgets()
+    
+        self.ui_ch_eq = EquationWin()
 
         StartWin.setCentralWidget(self.start_widgets)
 
@@ -83,6 +86,8 @@ class StartWin(object):
         self.method.resize(250, 45)
         self.method.setText(self.lang["change-method"])
         self.method.setProperty("type", 2)
+        
+        self.change_eq.clicked.connect(self.start_change_equ)
 
 
         self.intervalx.setGraphicsEffect(shadow)
@@ -91,8 +96,20 @@ class StartWin(object):
         self.method.setGraphicsEffect(shadow)
         
     def start_change_equ(self):
-        pass
-
+        self.ui_ch_eq.lang = self.lang.get_lang()
+        self.ui_ch_eq.setupUI(self)
+        self.ui_ch_eq.home_bt.clicked.connect(self.startMainWindow)
+        self.ui_ch_eq.language.clicked.connect(self.change_language)
+        self.page = "change equation"
+        self.show()        
+        
+        """        self.ui_start.home_bt.clicked.connect(self.startMainWindow)
+                self.ui_start.language.clicked.connect(self.change_language)
+                self.page = "start"
+                self.show()
+        """
+        
+        
     def result_widgets(self):
         # Result
         pass
