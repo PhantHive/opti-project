@@ -17,12 +17,12 @@ class Tex2Svg:
             str: SVG render.
         """
 
-        fig = plt.figure(figsize=(5, 5))
+        fig = plt.figure(figsize=(2, 2))
         fig.text(0, 0, r'{}'.format(self.formula), fontsize=fontsize, color="white")
 
         output = BytesIO()
         fig.savefig(output, dpi=dpi, transparent=True, format='svg',
-                    bbox_inches='tight', pad_inches=0.01, frameon=False)
+                    bbox_inches='tight', pad_inches=0.01)
         plt.close(fig)
 
         output.seek(0)

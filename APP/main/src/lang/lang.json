@@ -13,7 +13,8 @@
     "interval": "Intervalle",
     "intervalx-entry": "Entrer une intervalle de x ex: 2-5",
     "intervaly-entry": "Entrer une intervalle de y ex: 2-5",
-    "un" : "A definir"
+    "calc": "Calculateur",
+    "back": "Retour"
   },
   "en": {
     "language": "en",
@@ -28,7 +29,8 @@
     "interval": "Interval",
     "intervalx-entry": "Enter a valid interval of x ex: 2-5",
     "intervaly-entry": "Enter a valid interval of y ex: 2-5",
-    "un" : "A definir"
+    "calc" : "Calculator",
+    "back": "Back"
   }
 
 
