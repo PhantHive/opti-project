@@ -82,15 +82,15 @@ class SpeFct(object):
         # graphical part
         # ===
         # 3D
-        self.canvas_3d = Canvas(self.CWidgets, self.min_3d, self.max_3d, 0.1, self.fct, "s")
+        self.canvas_3d = Canvas(self.CWidgets)
         self.canvas_3d.resize(400, 250)
-        self.canvas_3d.surface()
+        self.canvas_3d.surface(self.min_3d, self.max_3d, 0.1, self.fct, "s")
         # ===
-        '''# Contour
-        self.canvas_outline = Canvas(self.CWidgets, self.min_o, self.max_o, 0.1, self.fct, "s")
+        # Contour
+        self.canvas_outline = Canvas(self.CWidgets)
         self.canvas_outline.resize(400, 250)
-        self.canvas_outline.contour([i for i in range(12)])
-        # ==='''
+        self.canvas_outline.contour(self.min_o, self.max_o, 0.1, self.fct, "s", [i for i in range(12)])
+        # ===
         
 
         # 3D Graph change graph
@@ -141,7 +141,7 @@ class SpeFct(object):
         self.canvas_3d.move(int(self.width * 0.55), int(self.height * 0.05))
         self.graph_change.move(int(self.width * 0.65), int(self.height * 0.55))
 
-        # self.canvas_outline.move(int(self.width * 0.55), int(self.height * 0.7))
+        self.canvas_outline.move(int(self.width * 0.55), int(self.height * 0.7))
         # ===
 
         self.fct_comment.move(int(self.width * 0.05), int(self.height * 0))

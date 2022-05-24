@@ -18,13 +18,8 @@ def dark_style():
 
 class Canvas(FigureCanvas):
 
-    def __init__(self, parent, a, b, h, f_class, fct):
+    def __init__(self, parent):
         dark_style()
-        self.a = a
-        self.b = b
-        self.h = h
-        self.f_class = f_class
-        self.fct = getattr(self.f_class, fct)
 
         self.fig, self.ax = plt.subplots(dpi=77)
         super().__init__(self.fig)
@@ -38,7 +33,12 @@ class Canvas(FigureCanvas):
         self.ax.grid(c="#003740")
         self.ax.plot(x, y)
 
-    def surface(self):
+    def surface(self, a, b, h, f_class, fct):
+        self.a = a
+        self.b = b
+        self.h = h
+        self.f_class = f_class
+        self.fct = getattr(self.f_class, fct)
 
         x = np.arange(self.a, self.b, self.h)
         y = np.arange(self.a, self.b, self.h)
@@ -47,7 +47,12 @@ class Canvas(FigureCanvas):
         self.f_class.set_x(xx, yy)
         ax.plot_surface(xx, yy, self.fct())
 
-    def contour(self, arg):
+    def contour(self, a, b, h, f_class, fct, arg):
+        self.a = a
+        self.b = b
+        self.h = h
+        self.f_class = f_class
+        self.fct = getattr(self.f_class, fct)
 
         x = np.arange(self.a, self.b, self.h)
         y = np.arange(self.a, self.b, self.h)
