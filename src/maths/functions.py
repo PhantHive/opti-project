@@ -2,6 +2,7 @@ import numpy as np
 
 
 class Functions:
+
     def __init__(self, x1=None, x2=None):
         """
         functions with their derivatives
@@ -42,30 +43,26 @@ class Functions:
         # ------------------------
 
     def Rosenbrock(self):
-        return (self.x1 - 1) ** 2 + 10 * (self.x1**2 - self.x2) ** 2
+        return (self.x1 - 1)**2 + 10 * (self.x1**2 - self.x2)**2
 
     def Ros_der(self):
-        return np.array(
-            [
-                40 * self.x1**3 + 2 * self.x1 - 2 - 40 * self.x1 * self.x2,
-                -20 * self.x1**2 + 20 * self.x2,
-            ]
-        )
+        return np.array([
+            40 * self.x1**3 + 2 * self.x1 - 2 - 40 * self.x1 * self.x2,
+            -20 * self.x1**2 + 20 * self.x2,
+        ])
 
     def H_Ros(self):
-        return np.array(
-            [
-                [120 * self.x1**2 + 2 - 40 * self.x2, -40 * self.x1],
-                [-40 * self.x1, 20],
-            ]
-        )
+        return np.array([
+            [120 * self.x1**2 + 2 - 40 * self.x2, -40 * self.x1],
+            [-40 * self.x1, 20],
+        ])
 
         # ------------------------
         #          Equation 3
         # ------------------------
 
     def g1(self):
-        return (self.x1 - 1) ** 2 + 2 * self.x2**2
+        return (self.x1 - 1)**2 + 2 * self.x2**2
 
     def g1_der(self):
         return np.array([2 * self.x1 - 2, 2 * self.x2])
@@ -81,7 +78,8 @@ class Functions:
         return 2 * self.x1**3 - 6 * self.x1 * self.x2 + 3 * self.x2**2
 
     def g2_der(self):
-        return np.array([6 * self.x1**2 - 6 * self.x2, -6 * self.x1 - 6 * self.x2])
+        return np.array(
+            [6 * self.x1**2 - 6 * self.x2, -6 * self.x1 - 6 * self.x2])
 
     def H_g2(self):
         return np.array([[12 * self.x1, -6], [-6, -6]])
@@ -94,12 +92,11 @@ class Functions:
         return self.x1**2 * self.x2**3
 
     def g3_der(self):
-        return np.array([2 * self.x1 * self.x2**3, 3 * self.x1**2 * self.x2**2])
+        return np.array(
+            [2 * self.x1 * self.x2**3, 3 * self.x1**2 * self.x2**2])
 
     def H_g3(self):
-        return np.array(
-            [
-                [2 * self.x2**3, 6 * self.x1 * self.x2**2],
-                [6 * self.x1 * self.x2**2, 6 * self.x1**2 * self.x2],
-            ]
-        )
+        return np.array([
+            [2 * self.x2**3, 6 * self.x1 * self.x2**2],
+            [6 * self.x1 * self.x2**2, 6 * self.x1**2 * self.x2],
+        ])

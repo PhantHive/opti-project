@@ -22,6 +22,7 @@ from src.pages.calculator import EquationWin
 
 
 class StartWin(object):
+
     def __init__(self):
         """
         choose the equation to solve within a specific interval
@@ -52,7 +53,8 @@ class StartWin(object):
         )
         StartWin.setFixedSize(self.width, self.height)
 
-        StartWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"])
+        StartWin.setWindowTitle(self.lang["app-title"] + " \ " +
+                                self.lang["start"])
 
         self.start_widgets = QWidget(StartWin)
 
@@ -89,7 +91,6 @@ class StartWin(object):
         self.viewer.load(svgText.tex2svg())
         self.viewer.setProperty("type", 2)
         self.viewer.resize(400, 350)
-
         """self.equation = QLabel(self.start_widgets)
         self.equation.resize(250, 55)
         self.equation.setProperty("type", 2)"""

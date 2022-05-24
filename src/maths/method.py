@@ -22,7 +22,7 @@ def H_g(x1, x2):
 
 
 def Rosenbrock(x, y):
-    return (x - 1) ** 2 + 10 * (x**2 - y) ** 2
+    return (x - 1)**2 + 10 * (x**2 - y)**2
 
 
 def Ros_der(x, y):
@@ -93,6 +93,7 @@ def rechercheDuPas(x, d, rho, tolR, maxIt, Hf, f_der):
 
 
 def gradientPreconditionne(x0, rho, tol, Nitermax, H_f, f_der):
+
     def Dj(H_f, x):
         H = H_f(x[0], x[1])
         d = np.array([[H[0, 0], 0], [0, H[1, 1]]])
@@ -144,7 +145,8 @@ def gradient_meth_quasi_newton(x0, rho, tol, Nitermax, H_f, f_der):
         # print(Di)
         # print(s.T@Di@s)
         # print(Di@s@(s.T@Di))
-        Di = Di - (Di @ s @ (s.T @ Di)) / (s.T @ Di @ s) + (y @ y.T) / (y.T @ s)
+        Di = Di - (Di @ s @ (s.T @ Di)) / (s.T @ Di @ s) + (y @ y.T) / (
+            y.T @ s)
 
         a = f_der(x[0], x[1])
 
