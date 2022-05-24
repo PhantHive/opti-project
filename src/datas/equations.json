@@ -1,13 +1,13 @@
 {
-  "1": "$f(x) =$ \t $ {x_1}^2 + {x_2}^4 + 2*{x_2}^2$  \n\n $f'(x) =$ \t $2*{x_1}$ \n\t\t  $4*{x_2}^3 + 4*{x_2}$ \n\n $H_g = $ \t $2 \\quad\\quad 0$ \n\t\t $0 \\quad\\quad 12*{x_2}^2 + 4$",
+  "1": "$f(x) =$ \t $ {x_1}^2 + {x_2}^4 + 2{x_2}^2$  \n\n $f'(x) =$ \t $\\left\\lceil\\hspace{2}2{x_1}\\hspace{2}\\rceil\\right.$ \n\t\t  $\\left\\lfloor\\;4{x_2}^3 + 4{x_2}\\;\\rfloor\\right.$ \n\n $H_g = $ \t $\\left\\lceil\\; 2 \\right. \\hspace{4} \\left. 0\\hspace{2}\\;\\rceil\\right.$ \n\t\t $\\left\\lfloor\\; 0 \\right. \\hspace{2} \\left. 12{x_2}^2 + 4\\rfloor\\right.$",
 
-  "2": "$f(x) =$ \t $({x_1 - 1})^2 + 10*({x_1}^2 - x_2)^2$ \n\n $f'(x) =$ \t $40*{x_1}^3 + (2 - 40*x_2)*x_1 - 2$ \n\t\t  $20*{x_2} - 20*{x_1}^2$ \n\n $H_g = $ \t $120 * {x_1}^2 + 2 - 40 * x_2 \\quad\\quad\\quad -40 * x_1$ \n\t\t\t\t $-40 * x_1 \\quad\\quad\\quad\\quad 20$",
+  "2": "$f(x) =$ \t $({x_1 - 1})^2 + 10*({x_1}^2 - x_2)^2$ \n\n $f'(x) =$ \t $\\left\\lceil40{x_1}^3 + (2 - 40x_2)x_1 - 2\\rceil\\right.$ \n\t\t  $\\left\\lfloor\\hspace{2}20*{x_2} - 20*{x_1}^2\\hspace{2}\\rfloor\\right.$ \n\n $H_g = $ \t $\\left\\lceil 120{x_1}^2 + 2 - 40x_2 \\hspace{3} -40x_1 \\rceil\\right.$ \n\t\t\t\t $\\left\\lfloor\\;-40x_1 \\hspace{2} \\left. 20\\rfloor\\right.$",
 
   "3": "$f(x) =$ \t $({x_1} - 1)^2 + 2*{x_2}^2$ \n\n $f'(x) =$ \t $2*{x_1} - 2 $ \n\t\t $2*{x_2}$\n\n $H_f = $ \t $2\\quad\\quad 0$ \n\t\t $0 \\quad\\quad 2$",
 
-  "4": "$f(x) =$ \t $ 2*{x_1}^3 - 6*{x_1}{x_2} + 3*{x_2}^2$ \n\n $f'(x) = $ \t $6*{x_1}^2 - 6*{x_2}$ \n\t\t $-6*{x_1} -6*{x_2}$\n\n $H_f = $ \t $12*{x_1} \\quad\\quad -6$ \n\t\t $-6 \\quad\\quad -6$",
+  "4": "$f(x) =$ \t $ 2*{x_1}^3 - 6*{x_1}{x_2} + 3*{x_2}^2$ \n\n $f'(x) = $ \t $6{x_1}^2 - 6{x_2}$ \n\t\t $-6{x_1} -6{x_2}$\n\n $H_f = $ \t $12{x_1} \\quad\\quad -6$ \n\t\t $-6 \\quad\\quad -6$",
 
-  "5": "$f(x) = $ \t $ {x_1}^2{x_2}^3$ \n\n $f'(x) = $ \t $2*{x_1}{x_2}^3$ \n\t\t $3*{x_1}^2{x_2}^2$ \n\n $H_f = $ \t $2*{x_2}^3 \\quad\\quad 6*{x_1}{x_2}^2 $ \n\t\t $ 6*{x_1}{x_2}^2 \\quad\\quad 6*{x_1}^2{x_2}$ ",
+  "5": "$f(x) = $ \t $ {x_1}^2{x_2}^3$ \n\n $f'(x) = $ \t $2{x_1}{x_2}^3$ \n\t\t $3{x_1}^2{x_2}^2$ \n\n $H_f = $ \t $2{x_2}^3 \\quad\\quad 6{x_1}{x_2}^2 $ \n\t\t $ 6{x_1}{x_2}^2 \\quad\\quad 6{x_1}^2{x_2}$ ",
 
   "_comment": "$f(x) = $ \t $ <ele f> $ \n\n $f'(x) = $ \t $ <ele 1 f' > $ \n\t\t $ <ele 2 f' > $ \n\n $H_f = $ \t $ <ele 1 H> \\quad\\quad <ele 2 H> $ \n\t\t $ <ele 3 H> \\quad\\quad <ele 4 H> $ "
 }

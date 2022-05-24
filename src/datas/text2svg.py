@@ -22,7 +22,7 @@ class Tex2Svg:
 
         output = BytesIO()
         fig.savefig(output, dpi=dpi, transparent=True, format='svg',
-                    bbox_inches='tight', pad_inches=0.01, frameon=False)
+                    bbox_inches='tight', pad_inches=0.01)
         plt.close(fig)
 
         output.seek(0)

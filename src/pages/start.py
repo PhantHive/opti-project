@@ -16,7 +16,7 @@ class StartWin(object):
         '''
         choose the equation to solve within a specific interval
         '''
-
+        self.i = 1
         self.screen = QtWidgets.QDesktopWidget().screenGeometry()
         self.width = int(self.screen.width() * 0.50)
         self.height = int(self.screen.height() * 0.55)
@@ -41,6 +41,7 @@ class StartWin(object):
 
         self.verif = False
         self.fct = Functions()
+
         self.formula = json.load(open("src/datas/equations.json"))
 
         self.start_widgets = QWidget(StartWin)
@@ -112,15 +113,19 @@ class StartWin(object):
 
     def start_change_equ(self):
 
-        i = self.fct.get_equation()
-        print(f"Equation choisie: {i}")
+        self.i = self.fct.get_equation()
+        print(f"Current equation: {self.i}")
 
-        if (i == 5):
-            self.fct.set_equation(1)
+        if (self.i == (len(self.formula) - 1)):
+            self.i = 1
+            self.fct.set_equation(self.i)
+            print(f"Choosen equation: {self.i}")
         else:
-            self.fct.set_equation(i+1)
+            self.i += 1
+            self.fct.set_equation(self.i)
+            print(f"Choosen equation: {self.i}")
 
-        svgText = Tex2Svg(self.formula[str(i)])
+        svgText = Tex2Svg(self.formula[str(self.i)])
         self.viewer.load(svgText.tex2svg())
 
     def start_verif(self):
