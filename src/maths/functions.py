@@ -2,7 +2,6 @@ import numpy as np
 
 
 class Functions:
-    
 
     def __init__(self, x1=None, x2=None):
         '''
@@ -10,7 +9,7 @@ class Functions:
         :param x1:
         :param x2:
         '''
-        
+
         self.x1 = x1
         self.x2 = x2
         self.eq = 1

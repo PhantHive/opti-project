@@ -34,19 +34,18 @@ class StartWin(object):
         self.intervaly = None
         self.equation = None
 
-
     def setupUI(self, StartWin):
         StartWin.setGeometry((self.screen.width() - self.width) // 2, (self.screen.height() - self.height) // 2,
                              self.width, self.height)
         StartWin.setFixedSize(self.width, self.height)
 
-        StartWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"])
+        StartWin.setWindowTitle(
+            self.lang["app-title"] + " \ " + self.lang["start"])
 
         self.fct = Functions()
         self.formula = json.load(open("src/datas/equations.json"))
 
         self.start_widgets = QWidget(StartWin)
-
 
         self.language = QPushButton(self.start_widgets)
         self.language.setText(self.lang["language"])
@@ -69,18 +68,16 @@ class StartWin(object):
         self.intervalx = QLineEdit(self.start_widgets)
         self.intervalx.setPlaceholderText(self.lang["intervalx-entry"])
         self.intervalx.resize(250, 45)
-        
+
         self.intervaly = QLineEdit(self.start_widgets)
         self.intervaly.setPlaceholderText(self.lang["intervaly-entry"])
         self.intervaly.resize(250, 45)
-
 
         svgText = Tex2Svg(self.formula["1"])
         self.viewer = QtSvg.QSvgWidget(self.start_widgets)
         self.viewer.load(svgText.tex2svg())
         self.viewer.setProperty("type", 2)
         self.viewer.resize(350, 300)
-
 
         '''self.equation = QLabel(self.start_widgets)
         self.equation.resize(250, 55)
@@ -101,7 +98,6 @@ class StartWin(object):
         self.method.setText(self.lang["change-method"])
         self.method.setProperty("type", 2)
 
-
         self.intervalx.setGraphicsEffect(shadow)
         self.intervaly.setGraphicsEffect(shadow)
         self.change_eq.setGraphicsEffect(shadow)
@@ -110,8 +106,6 @@ class StartWin(object):
         self.change_eq.clicked.connect(self.start_change_equ)
         #self.calculator = EquationWin(self.lang)
 
-
-        
     def start_change_equ(self):
 
         i = self.fct.get_equation()
@@ -125,11 +119,9 @@ class StartWin(object):
 
     def start_method(self):
 
-        #self.calculator.show()
-        #self.calculator.setupUI()
+        # self.calculator.show()
+        # self.calculator.setupUI()
         pass
-
-
 
     def result_widgets(self):
         # Result
@@ -144,7 +136,6 @@ class StartWin(object):
 
         self.viewer.move(int(self.width * 0.1), int(self.height * 0.2))
 
-
         self.intervalx.move(int(self.width * 0.7), int(self.height * 0.4))
         self.intervaly.move(int(self.width * 0.7), int(self.height * 0.55))
 
@@ -154,4 +145,3 @@ class StartWin(object):
 
     def calculate(self):
         pass
-
