@@ -3,12 +3,17 @@ from decimal import Decimal
 
 import numpy as np
 from matplotlib import pyplot as plt
-from PyQt5 import QtSvg, QtWidgets
+from PyQt5 import QtSvg
+from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtSvg import QSvgWidget
-from PyQt5.QtWidgets import (QComboBox, QGraphicsDropShadowEffect, QLabel,
-                             QLineEdit, QPushButton, QWidget)
+from PyQt5.QtWidgets import QComboBox
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QLineEdit
+from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtWidgets import QWidget
 
 from src.canvas.Canvas import Canvas
 from src.datas.text2svg import Tex2Svg
