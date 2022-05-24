@@ -4,8 +4,8 @@ Created on Fri Apr  8 07:44:00 2022
 
 @author: coren
 """
-import numpy as np
 import matplotlib.pyplot as pp
+import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 
 
