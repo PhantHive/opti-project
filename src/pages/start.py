@@ -6,7 +6,14 @@ from PyQt5 import QtWidgets, QtSvg
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtSvg import QSvgWidget
-from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QComboBox, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import (
+    QPushButton,
+    QLabel,
+    QWidget,
+    QLineEdit,
+    QComboBox,
+    QGraphicsDropShadowEffect,
+)
 from matplotlib import pyplot as plt
 
 from src.canvas.Canvas import Canvas
@@ -17,11 +24,10 @@ from src.pages.calculator import EquationWin
 
 
 class StartWin(object):
-
     def __init__(self):
-        '''
+        """
         choose the equation to solve within a specific interval
-        '''
+        """
 
         self.screen = QtWidgets.QDesktopWidget().screenGeometry()
         self.width = int(self.screen.width() * 0.50)
@@ -40,12 +46,15 @@ class StartWin(object):
         self.fct = Functions()
 
     def setupUI(self, StartWin):
-        StartWin.setGeometry((self.screen.width() - self.width) // 2, (self.screen.height() - self.height) // 2,
-                             self.width, self.height)
+        StartWin.setGeometry(
+            (self.screen.width() - self.width) // 2,
+            (self.screen.height() - self.height) // 2,
+            self.width,
+            self.height,
+        )
         StartWin.setFixedSize(self.width, self.height)
 
-        StartWin.setWindowTitle(
-            self.lang["app-title"] + " \ " + self.lang["start"])
+        StartWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"])
 
         self.start_widgets = QWidget(StartWin)
 
@@ -83,9 +92,9 @@ class StartWin(object):
         self.viewer.setProperty("type", 2)
         self.viewer.resize(400, 350)
 
-        '''self.equation = QLabel(self.start_widgets)
+        """self.equation = QLabel(self.start_widgets)
         self.equation.resize(250, 55)
-        self.equation.setProperty("type", 2)'''
+        self.equation.setProperty("type", 2)"""
 
         shadow = QGraphicsDropShadowEffect()
         shadow.setColor(Qt.black)
@@ -110,7 +119,7 @@ class StartWin(object):
         self.method.setGraphicsEffect(shadow)
 
         self.change_eq.clicked.connect(self.start_change_equ)
-        #self.calculator = EquationWin(self.lang)
+        # self.calculator = EquationWin(self.lang)
 
     def start_change_equ(self):
         """
@@ -119,7 +128,7 @@ class StartWin(object):
         self.ui_ch_eq.home_bt.clicked.connect(self.startMainWindow)
         self.ui_ch_eq.language.clicked.connect(self.change_language)
         self.page = "change equation"
-        self.show()        
+        self.show()
 
                 self.ui_start.home_bt.clicked.connect(self.startMainWindow)
                 self.ui_start.language.clicked.connect(self.change_language)
@@ -128,10 +137,10 @@ class StartWin(object):
         """
 
         i = self.fct.get_equation()
-        if (i == 2):
+        if i == 2:
             self.fct.set_equation(1)
         else:
-            self.fct.set_equation(i+1)
+            self.fct.set_equation(i + 1)
 
         svgText = Tex2Svg(self.formula[str(i)])
         self.viewer.load(svgText.tex2svg())
@@ -151,7 +160,7 @@ class StartWin(object):
         self.language.move(int(self.width * 0.95), int(self.height * 0.015))
 
         self.change_eq.move(int(self.width * 0.6), int(self.height * 0.25))
-        #self.equation.move(int(self.width * 0.1), int(self.height * 0.3))
+        # self.equation.move(int(self.width * 0.1), int(self.height * 0.3))
 
         self.viewer.move(int(self.width * 0.1), int(self.height * 0.2))
 

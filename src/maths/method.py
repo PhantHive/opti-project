@@ -10,27 +10,27 @@ from mpl_toolkits.mplot3d import Axes3D
 
 
 def g(x1, x2):
-    return (x1**2 + x2**4 + 2*x2**2)
+    return x1**2 + x2**4 + 2 * x2**2
 
 
 def g_der(x1, x2):
-    return np.array([2*x1, 4*x2**3 + 4*x2])
+    return np.array([2 * x1, 4 * x2**3 + 4 * x2])
 
 
 def H_g(x1, x2):
-    return np.array([[2, 0], [0, 12*x2**2+4]])
+    return np.array([[2, 0], [0, 12 * x2**2 + 4]])
 
 
 def Rosenbrock(x, y):
-    return (x-1)**2 + 10*(x**2 - y)**2
+    return (x - 1) ** 2 + 10 * (x**2 - y) ** 2
 
 
 def Ros_der(x, y):
-    return np.array([40*x**3 + 2*x - 2 - 40*x*y, -20*x**2 + 20*y])
+    return np.array([40 * x**3 + 2 * x - 2 - 40 * x * y, -20 * x**2 + 20 * y])
 
 
 def H_Ros(x, y):
-    return np.array([[120*x**2 + 2 - 40*y, -40*x], [-40*x, 20]])
+    return np.array([[120 * x**2 + 2 - 40 * y, -40 * x], [-40 * x, 20]])
 
 
 def Surface(a, b, h, f):
@@ -59,7 +59,7 @@ def gradientPasFixe(x0, rho, tol, Nitermax, f_der):
     x_list = [x]
     while np.linalg.norm(f_der(x[0], x[1])) > tol and i < Nitermax:
         d = -f_der(x[0], x[1])
-        x += rho*d
+        x += rho * d
         i += 1
         x_list.append(x.copy())
     return (x, x_list, i)
@@ -74,20 +74,20 @@ def gradientPasOptimal(x0, rho, tol, Nitermax, Hf, f_der):
         d = -f_der(x[0], x[1])
         rho_z = rechercheDuPas(x, d, rho, 10**-8, 10**4, Hf, f_der)
 
-        x += rho_z*d
+        x += rho_z * d
         i += 1
         x_list.append(x)
     return (x, x_list, i)
 
 
 def rechercheDuPas(x, d, rho, tolR, maxIt, Hf, f_der):
-    rho_0 = 10*rho
+    rho_0 = 10 * rho
     j = 1
     while abs(rho - rho_0) > tolR and j < maxIt:
-        phi_p = d.T@f_der(x[0] + rho*d[0], x[1] + rho*d[1])
-        phi_s = d.T@Hf(x[0] + rho*d[0], x[1] + rho*d[1])@d
+        phi_p = d.T @ f_der(x[0] + rho * d[0], x[1] + rho * d[1])
+        phi_s = d.T @ Hf(x[0] + rho * d[0], x[1] + rho * d[1]) @ d
         rho_0 = rho
-        rho = rho - phi_p/phi_s
+        rho = rho - phi_p / phi_s
         j += 1
     return rho
 
@@ -97,15 +97,16 @@ def gradientPreconditionne(x0, rho, tol, Nitermax, H_f, f_der):
         H = H_f(x[0], x[1])
         d = np.array([[H[0, 0], 0], [0, H[1, 1]]])
         return d
+
     i = 0
     x = x0.copy()
-    a = tol*2
+    a = tol * 2
     x_list = list()
     while a > tol and i < Nitermax:
         Di = Dj(H_f, x)
-        di = np.linalg.inv(Di)@(-f_der(x[0], x[1]))
+        di = np.linalg.inv(Di) @ (-f_der(x[0], x[1]))
         rho_z = rechercheDuPas(x, di, rho, 10**-8, 10**4, H_f, f_der)
-        x += rho_z*di
+        x += rho_z * di
         i += 1
         x_list.append(x)
         a = np.linalg.norm(f_der(x[0], x[1]))
@@ -115,13 +116,13 @@ def gradientPreconditionne(x0, rho, tol, Nitermax, H_f, f_der):
 def gradient_methode_newton(x0, rho, tol, Nitermax, H_f, f_der):
     i = 0
     x = x0.copy()
-    a = tol*2
+    a = tol * 2
     x_list = list()
     while a > tol and i < Nitermax:
         Di = H_f(x[0], x[1])
-        di = np.linalg.inv(Di)@(-f_der(x[0], x[1]))
+        di = np.linalg.inv(Di) @ (-f_der(x[0], x[1]))
         rho_z = rechercheDuPas(x, di, rho, 10**-8, 10**4, H_f, f_der)
-        x += rho_z*di
+        x += rho_z * di
         i += 1
         x_list.append(x)
         a = np.linalg.norm(f_der(x[0], x[1]))
@@ -135,15 +136,15 @@ def gradient_meth_quasi_newton(x0, rho, tol, Nitermax, H_f, f_der):
     x_list = list()
     Di = np.eye(2)
     while np.linalg.norm(a) > tol and i < Nitermax:
-        di = np.linalg.inv(Di)@(-f_der(x[0], x[1]))
+        di = np.linalg.inv(Di) @ (-f_der(x[0], x[1]))
         rho_z = rechercheDuPas(x, di, rho, 10**-8, 10**4, H_f, f_der)
-        s = rho_z*di
+        s = rho_z * di
         x += s
         y = f_der(x[0], x[1]) - a
         # print(Di)
         # print(s.T@Di@s)
         # print(Di@s@(s.T@Di))
-        Di = Di - (Di@s@(s.T@Di))/(s.T@Di@s) + (y@y.T)/(y.T@s)
+        Di = Di - (Di @ s @ (s.T @ Di)) / (s.T @ Di @ s) + (y @ y.T) / (y.T @ s)
 
         a = f_der(x[0], x[1])
 
