@@ -33,6 +33,8 @@ class StartWin(object):
 
 
     def setupUI(self, StartWin):
+
+        StartWin.hide()
         StartWin.setGeometry((self.screen.width() - self.width) // 2, (self.screen.height() - self.height) // 2,
                              self.width, self.height)
         StartWin.setFixedSize(self.width, self.height)
@@ -55,6 +57,8 @@ class StartWin(object):
         self.move_widgets()
 
         StartWin.setCentralWidget(self.start_widgets)
+        StartWin.show()
+
 
     def entry_widgets(self):
 

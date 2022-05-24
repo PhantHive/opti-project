@@ -30,22 +30,18 @@ class StartWin(object):
         self.intervaly = None
         self.equation = None
 
-
+        self.verif = False
 
     def setupUI(self, StartWin):
+
+        StartWin.hide()
         StartWin.setGeometry((self.screen.width() - self.width) // 2, (self.screen.height() - self.height) // 2,
                              self.width, self.height)
         StartWin.setFixedSize(self.width, self.height)
 
         StartWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"])
 
-        self.verif = False
-        self.fct = Functions()
-
-        self.formula = json.load(open("src/datas/equations.json"))
-
         self.start_widgets = QWidget(StartWin)
-
 
         self.language = QPushButton(self.start_widgets)
         self.language.setText(self.lang["language"])
@@ -55,8 +51,14 @@ class StartWin(object):
         self.move_widgets()
 
         StartWin.setCentralWidget(self.start_widgets)
+        StartWin.show()
+
 
     def entry_widgets(self):
+
+        self.fct = Functions()
+
+        self.formula = json.load(open("src/datas/equations.json"))
 
         # self.calcul.clicked.connect(self.calculate)
         self.home_bt = QPushButton(self.start_widgets)

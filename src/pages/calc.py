@@ -27,7 +27,7 @@ class Calculator(object):
         self.onlyInt = QIntValidator()
 
     def setupUI(self, Calculator):
-        Calculator.setGeometry(500, 100, 1200, 500)
+        Calculator.setGeometry(500, 100, 1200, 600)
         Calculator.setFixedSize(1200, 600)
         Calculator.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"] + " \ " + self.lang["calc"])
 
