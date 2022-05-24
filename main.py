@@ -1,7 +1,7 @@
-from PyQt5 import QtGui, QtWidgets, QtCore
-from PyQt5.QtGui import QFont, QFontDatabase
-from PyQt5.QtWidgets import QPushButton, QApplication, QMainWindow, QLabel, QStackedWidget, QHBoxLayout, QVBoxLayout, \
-    QWidget, QListWidget, QStackedLayout
+from PyQt5 import QtGui
+from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import QPushButton, QApplication, QMainWindow
+
 import sys
 
 from src.pages.calc import Calculator
@@ -61,12 +61,13 @@ class GUI(QMainWindow):
         :return: the equation selector menu
         '''
 
-        self.ui_calculator.lang = self.language.get_lang()
-        self.ui_calculator.setupUI(self)
-        self.ui_calculator.back_bt.clicked.connect(self.load_start)
-        self.ui_calculator.language.clicked.connect(self.change_language)
-        self.page = "calc"
-        self.show()
+        if self.ui_start.verif == True:
+            self.ui_calculator.lang = self.language.get_lang()
+            self.ui_calculator.setupUI(self)
+            self.ui_calculator.back_bt.clicked.connect(self.load_start)
+            self.ui_calculator.language.clicked.connect(self.change_language)
+            self.page = "calc"
+            self.show()
 
     def load_config(self):
         '''
@@ -74,7 +75,7 @@ class GUI(QMainWindow):
         '''
 
         self.ui_conf.setupUI(self)
-        #self.ui_conf.homeBt.clicked.connect(self.startMainWindow)
+        # self.ui_conf.homeBt.clicked.connect(self.startMainWindow)
         self.page = "config"
         self.show()
 

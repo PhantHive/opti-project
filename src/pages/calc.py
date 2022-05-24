@@ -3,8 +3,8 @@ from decimal import Decimal
 import numpy as np
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QIntValidator, QPainter, QPen, QPixmap
-from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QComboBox, QVBoxLayout, QRadioButton, \
+from PyQt5.QtGui import QIntValidator
+from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QVBoxLayout, QRadioButton, \
     QGraphicsDropShadowEffect
 from src.canvas.Canvas import Canvas
 

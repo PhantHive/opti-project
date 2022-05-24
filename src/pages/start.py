@@ -1,15 +1,11 @@
 import json
-from decimal import Decimal
 
-import numpy as np
 from PyQt5 import QtWidgets, QtSvg
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtSvg import QSvgWidget
-from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QComboBox, QGraphicsDropShadowEffect
-from matplotlib import pyplot as plt
+from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QGraphicsDropShadowEffect
 
-from src.canvas.Canvas import Canvas
 from src.maths.functions import Functions
 from src.datas.text2svg import Tex2Svg
 
@@ -35,6 +31,7 @@ class StartWin(object):
         self.equation = None
 
 
+
     def setupUI(self, StartWin):
         StartWin.setGeometry((self.screen.width() - self.width) // 2, (self.screen.height() - self.height) // 2,
                              self.width, self.height)
@@ -42,6 +39,7 @@ class StartWin(object):
 
         StartWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"])
 
+        self.verif = False
         self.fct = Functions()
         self.formula = json.load(open("src/datas/equations.json"))
 
@@ -108,14 +106,16 @@ class StartWin(object):
         self.method.setGraphicsEffect(shadow)
 
         self.change_eq.clicked.connect(self.start_change_equ)
+        self.method.clicked.connect(self.start_verif)
         #self.calculator = EquationWin(self.lang)
 
 
-        
     def start_change_equ(self):
 
         i = self.fct.get_equation()
-        if (i == 2):
+        print(f"Equation choisie: {i}")
+
+        if (i == 5):
             self.fct.set_equation(1)
         else:
             self.fct.set_equation(i+1)
@@ -123,11 +123,43 @@ class StartWin(object):
         svgText = Tex2Svg(self.formula[str(i)])
         self.viewer.load(svgText.tex2svg())
 
-    def start_method(self):
+    def start_verif(self):
 
-        #self.calculator.show()
-        #self.calculator.setupUI()
-        pass
+        if self.intervalx.text() == "" and self.intervaly.text() == "":
+            self.intervalx.setStyleSheet("QLineEdit{border-color: red;};")
+            self.intervaly.setStyleSheet("QLineEdit{border-color: red;};")
+        elif self.intervalx.text() == "":
+            self.intervalx.setStyleSheet("QLineEdit{border-color: red;};")
+            self.intervaly.setStyleSheet("QLineEdit{border-color: orange;};")
+        elif self.intervaly.text() == "":
+            self.intervaly.setStyleSheet("QLineEdit{border-color: red;};")
+            self.intervalx.setStyleSheet("QLineEdit{border-color: orange;};")
+        else:
+
+            check = [False, False]
+
+            try:
+                min_x = int(self.intervalx.text().split("-")[0])
+                max_x = int(self.intervalx.text().split("-")[1])
+                print(f"X Interval: [{min_x} ; {max_x}]")
+                check[0] = True
+                self.intervalx.setStyleSheet("QLineEdit{border-color: orange;};")
+            except IndexError:
+                self.intervalx.setStyleSheet("QLineEdit{border-color: red;};")
+
+            try:
+                min_y = int(self.intervaly.text().split("-")[0])
+                max_y = int(self.intervaly.text().split("-")[1])
+                print(f"Y Interval: [{min_y} ; {max_y}]")
+                check[1] = True
+                self.intervaly.setStyleSheet("QLineEdit{border-color: orange;};")
+            except IndexError:
+                self.intervaly.setStyleSheet("QLineEdit{border-color: red;};")
+
+            if check == [True, True]:
+                self.intervaly.setStyleSheet("QLineEdit{border-color: orange;};")
+                self.intervalx.setStyleSheet("QLineEdit{border-color: orange;};")
+                self.verif = True
 
 
 
