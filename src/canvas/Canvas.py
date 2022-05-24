@@ -34,6 +34,9 @@ class Canvas(FigureCanvas):
         self.ax.plot(x, y)
 
     def surface(self, a, b, h, f_class, fct):
+
+        self.fig.clf()
+
         self.a = a
         self.b = b
         self.h = h
@@ -47,18 +50,22 @@ class Canvas(FigureCanvas):
         self.f_class.set_x(xx, yy)
         ax.plot_surface(xx, yy, self.fct())
 
-    def contour(self, a, b, h, f_class, fct, arg):
-        self.a = a
-        self.b = b
-        self.h = h
+    def contour(self, x, y, h, f_class, fct, arg):
+        self.ax.clear()
+        a = int(x - 1)
+        b = int(x + 1)
+        c = int(y - 1)
+        d = int(y + 1)
+
         self.f_class = f_class
         self.fct = getattr(self.f_class, fct)
-
-        x = np.arange(self.a, self.b, self.h)
-        y = np.arange(self.a, self.b, self.h)
+        x = np.arange(a, b, h)
+        y = np.arange(c, d, h)
         xx, yy = np.meshgrid(x, y)
         self.f_class.set_x(xx, yy)
-        plt.figure()
-        plt.contour(xx, yy, self.fct(), arg)
-        plt.colorbar()
-        plt.show()
+
+        self.ax.contour(xx, yy, self.fct(), arg)
+
+
+
+
