@@ -2,23 +2,17 @@ import json
 from decimal import Decimal
 
 import numpy as np
-from PyQt5 import QtWidgets, QtSvg
+from matplotlib import pyplot as plt
+from PyQt5 import QtSvg, QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtSvg import QSvgWidget
-from PyQt5.QtWidgets import (
-    QPushButton,
-    QLabel,
-    QWidget,
-    QLineEdit,
-    QComboBox,
-    QGraphicsDropShadowEffect,
-)
-from matplotlib import pyplot as plt
+from PyQt5.QtWidgets import (QComboBox, QGraphicsDropShadowEffect, QLabel,
+                             QLineEdit, QPushButton, QWidget)
 
 from src.canvas.Canvas import Canvas
-from src.maths.functions import Functions
 from src.datas.text2svg import Tex2Svg
+from src.maths.functions import Functions
 
 
 class StartWin(object):
