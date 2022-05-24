@@ -17,7 +17,7 @@ class Tex2Svg:
             str: SVG render.
         """
 
-        fig = plt.figure(figsize=(5, 5))
+        fig = plt.figure(figsize=(2, 2))
         fig.text(0, 0, r'{}'.format(self.formula), fontsize=fontsize, color="white")
 
         output = BytesIO()

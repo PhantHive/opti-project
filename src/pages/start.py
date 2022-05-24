@@ -8,12 +8,10 @@ from PyQt5.QtGui import QIntValidator
 from PyQt5.QtSvg import QSvgWidget
 from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QComboBox, QGraphicsDropShadowEffect
 from matplotlib import pyplot as plt
-from pyface.qt import QtGui
 
 from src.canvas.Canvas import Canvas
 from src.maths.functions import Functions
 from src.datas.text2svg import Tex2Svg
-from src.pages.calculator import EquationWin
 
 
 class StartWin(object):
@@ -26,7 +24,6 @@ class StartWin(object):
         self.screen = QtWidgets.QDesktopWidget().screenGeometry()
         self.width = int(self.screen.width() * 0.50)
         self.height = int(self.screen.height() * 0.55)
-        self.formula = json.load(open("src/datas/equations.json"))
 
         self.onlyInt = QIntValidator()
         self.lang = None
@@ -37,7 +34,6 @@ class StartWin(object):
         self.intervaly = None
         self.equation = None
 
-        self.fct = Functions()
 
     def setupUI(self, StartWin):
         StartWin.setGeometry((self.screen.width() - self.width) // 2, (self.screen.height() - self.height) // 2,
@@ -45,6 +41,9 @@ class StartWin(object):
         StartWin.setFixedSize(self.width, self.height)
 
         StartWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"])
+
+        self.fct = Functions()
+        self.formula = json.load(open("src/datas/equations.json"))
 
         self.start_widgets = QWidget(StartWin)
 
@@ -80,7 +79,7 @@ class StartWin(object):
         self.viewer = QtSvg.QSvgWidget(self.start_widgets)
         self.viewer.load(svgText.tex2svg())
         self.viewer.setProperty("type", 2)
-        self.viewer.resize(400, 350)
+        self.viewer.resize(350, 300)
 
 
         '''self.equation = QLabel(self.start_widgets)

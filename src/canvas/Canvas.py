@@ -22,11 +22,11 @@ class Canvas(FigureCanvas):
         fig, self.ax = plt.subplots(dpi=77)
         super().__init__(fig)
         self.setParent(parent)
-        self.ax.grid(c="#003740")
+        self.ax.grid(c="orange")
 
     def plot(self, x, y):
         self.ax.clear()
-        self.ax.set(xlabel='Nombre d\'itération', ylabel='Temps d\'execution (ms)', title='Temps d\'execution en '
+        self.ax.set(xlabel='?', ylabel='?', title='Temps d\'execution en '
                                                                                           'fonction du nombre '
                                                                                           'd\'itération')
         self.ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.1e'))

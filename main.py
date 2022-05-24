@@ -63,10 +63,9 @@ class GUI(QMainWindow):
 
         self.ui_calculator.lang = self.language.get_lang()
         self.ui_calculator.setupUI(self)
-        self.ui_start.home_bt.clicked.connect(self.startMainWindow)
-        #self.ui_calculator.home_bt.clicked.connect(self.startMainWindow)
-        #self.ui_calculator.language.clicked.connect(self.change_language)
-        self.page = "start"
+        self.ui_calculator.back_bt.clicked.connect(self.load_start)
+        self.ui_calculator.language.clicked.connect(self.change_language)
+        self.page = "calc"
         self.show()
 
     def load_config(self):
@@ -90,6 +89,12 @@ class GUI(QMainWindow):
             else:
                 self.language = Language("fr")
             self.startMainWindow()
+        elif self.page == "calc":
+            if self.ui_calculator.lang["language"] == "fr":
+                self.language = Language("en")
+            else:
+                self.language = Language("fr")
+            self.load_calc()
         else:
             if self.ui_start.lang["language"] == "fr":
                 self.language = Language("en")
