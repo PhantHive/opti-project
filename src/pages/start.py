@@ -21,6 +21,7 @@ from src.maths.functions import Functions
 
 
 class StartWin(object):
+
     def __init__(self):
         """
         choose the equation to solve within a specific interval
@@ -48,7 +49,8 @@ class StartWin(object):
         )
         StartWin.setFixedSize(self.width, self.height)
 
-        StartWin.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"])
+        StartWin.setWindowTitle(self.lang["app-title"] + " \ " +
+                                self.lang["start"])
 
         self.fct = Functions()
         self.formula = json.load(open("src/datas/equations.json"))
@@ -86,7 +88,6 @@ class StartWin(object):
         self.viewer.load(svgText.tex2svg())
         self.viewer.setProperty("type", 2)
         self.viewer.resize(350, 300)
-
         """self.equation = QLabel(self.start_widgets)
         self.equation.resize(250, 55)
         self.equation.setProperty("type", 2)"""
