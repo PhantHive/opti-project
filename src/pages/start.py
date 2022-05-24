@@ -8,7 +8,6 @@ from PyQt5.QtGui import QIntValidator
 from PyQt5.QtSvg import QSvgWidget
 from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QComboBox, QGraphicsDropShadowEffect
 from matplotlib import pyplot as plt
-from pyface.qt import QtGui
 
 from src.canvas.Canvas import Canvas
 
