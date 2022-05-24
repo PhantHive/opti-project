@@ -16,7 +16,8 @@
 
 
 ## Overview:
-This app resolve a few optimization problems using numpy and pyqt5.
+This branch is the exam branch. The last commit in time: d843696 (23h59)
+The main branch is: master
 
 ### Installation
 
