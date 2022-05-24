@@ -11,10 +11,11 @@
     "change-equation": "Changer equation",
     "change-method": "Choisir la methode",
     "interval": "Intervalle",
-    "intervalx-entry": "Entrer une intervalle de x ex: 2-5",
-    "intervaly-entry": "Entrer une intervalle de y ex: 2-5",
+    "intervalx-entry": "Entrer une intervalle de x ex: 2 5",
+    "intervaly-entry": "Entrer une intervalle de y ex: -10 5",
     "calc": "Calculateur",
-    "back": "Retour"
+    "back": "Retour",
+    "spe-function": "Etude de la fonction"
   },
   "en": {
     "language": "en",
@@ -27,10 +28,11 @@
     "change-equation": "Change equation",
     "change-method": "Choose a method",
     "interval": "Interval",
-    "intervalx-entry": "Enter a valid interval of x ex: 2-5",
-    "intervaly-entry": "Enter a valid interval of y ex: 2-5",
+    "intervalx-entry": "Enter a valid interval of x ex: 2 5",
+    "intervaly-entry": "Enter a valid interval of y ex: -10 5",
     "calc" : "Calculator",
-    "back": "Back"
+    "back": "Back",
+    "spe-function": "function infos"
   }
 
 

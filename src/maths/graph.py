@@ -1,11 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as pp
+from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+
+'''
+
+def dark_style():
+    plt.style.use("seaborn-dark")
+    for param in ['figure.facecolor', 'axes.facecolor', 'savefig.facecolor']:
+        plt.rcParams[param] = '#151515'  # bluish dark grey
+    for param in ['text.color', 'xtick.color', 'grid.color', 'ytick.color', 'axes.labelcolor']:
+        plt.rcParams[param] = 'white'  # very light grey
+    plt.rcParams["axes.edgecolor"] = "white"
+    plt.rcParams["axes.linewidth"] = 1'''
 
 class Graph:
 
     def __init__(self, a, b, h, f_class, fct):
 
+        #dark_style()
         self.a = a
         self.b = b
         self.h = h
@@ -31,3 +44,11 @@ class Graph:
         pp.contour(xx, yy, self.fct(), arg)
         pp.colorbar()
         pp.show()
+
+if __name__ == '__main__':
+
+    from src.maths.functions import Functions
+    fct = Functions(None, None)
+
+    grph = Graph(-5, 5, 0.1, fct, "s")
+    grph.Surface()

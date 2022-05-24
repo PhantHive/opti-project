@@ -18,8 +18,13 @@ def dark_style():
 
 class Canvas(FigureCanvas):
 
-    def __init__(self, parent):
+    def __init__(self, parent, a, b, h, f_class, fct):
         dark_style()
+        self.a = a
+        self.b = b
+        self.h = h
+        self.f_class = f_class
+        self.fct = getattr(self.f_class, fct)
 
         self.fig, self.ax = plt.subplots(dpi=77)
         super().__init__(self.fig)
@@ -28,20 +33,12 @@ class Canvas(FigureCanvas):
 
     def plot(self, x, y):
         self.ax.clear()
-        self.ax.set(xlabel='?', ylabel='?', title='Temps d\'execution en '
-                                                                                          'fonction du nombre '
-                                                                                          'd\'itération')
+        self.ax.set(xlabel='?', ylabel='?', title='?')
         self.ax.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.1e'))
         self.ax.grid(c="#003740")
         self.ax.plot(x, y)
 
-    def surface(self, a, b, h, f_class, fct):
-
-        self.a = a
-        self.b = b
-        self.h = h
-        self.f_class = f_class
-        self.fct = getattr(self.f_class, fct)
+    def surface(self):
 
         x = np.arange(self.a, self.b, self.h)
         y = np.arange(self.a, self.b, self.h)
@@ -49,3 +46,14 @@ class Canvas(FigureCanvas):
         ax = Axes3D(self.fig)
         self.f_class.set_x(xx, yy)
         ax.plot_surface(xx, yy, self.fct())
+
+    def contour(self, arg):
+
+        x = np.arange(self.a, self.b, self.h)
+        y = np.arange(self.a, self.b, self.h)
+        xx, yy = np.meshgrid(x, y)
+        self.f_class.set_x(xx, yy)
+        plt.figure()
+        plt.contour(xx, yy, self.fct(), arg)
+        plt.colorbar()
+        plt.show()

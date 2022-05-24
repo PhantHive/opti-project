@@ -13,6 +13,10 @@ from src.maths.graph import Graph
 
 class Calculator(object):
 
+    intervalx = [None, None]
+    intervaly = [None, None]
+    equation = 1
+
     def __init__(self):
         '''
         every possible configuration
@@ -24,26 +28,30 @@ class Calculator(object):
         self.lang = None
         self.back_bt = None
 
+        self.functions = ["f", "Rosenbrock", "g1", "g2", "g3"]
+
         self.onlyInt = QIntValidator()
 
-    def setupUI(self, Calculator):
-        Calculator.setGeometry(500, 100, 1200, 600)
-        Calculator.setFixedSize(1200, 600)
-        Calculator.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"] + " \ " + self.lang["calc"])
+    def setupUI(self, Calc):
+        Calc.setGeometry(500, 100, 1200, 600)
+        Calc.setFixedSize(1200, 600)
+        Calc.setWindowTitle(self.lang["app-title"] + " \ " + self.lang["start"] + " \ " + self.lang["calc"])
 
         shadow = QGraphicsDropShadowEffect()
         shadow.setColor(Qt.black)
         shadow.setBlurRadius(25)
         shadow.setOffset(1, 1)
 
-        self.CWidgets = QWidget(Calculator)
+        print("c", Calculator.equation)
+
+        self.CWidgets = QWidget(Calc)
         self.ChoiceWidgets = QWidget(self.CWidgets)
 
         self.layout = QVBoxLayout(self.ChoiceWidgets)
         self.method_1 = QRadioButton("Gradient 1")
         self.method_1.setChecked(True)
 
-        self.method_2 = QRadioButton("Gradient 3")
+        self.method_2 = QRadioButton("Gradient 2")
 
         self.method_3 = QRadioButton("Gradient 3")
 
@@ -61,7 +69,7 @@ class Calculator(object):
 
         self.layout.setSpacing(50)
 
-        Calculator.setLayout(self.layout)
+        Calc.setLayout(self.layout)
 
         # ligne
         '''painter = QPainter(Calculator)
@@ -75,7 +83,7 @@ class Calculator(object):
         self.result_widgets()
         self.move_widgets()
 
-        Calculator.setCentralWidget(self.CWidgets)
+        Calc.setCentralWidget(self.CWidgets)
 
     def btn_state(self, btn):
 
@@ -109,9 +117,11 @@ class Calculator(object):
         fct = Functions(None, None)
         # graphical part
 
+        print(self.functions[int(Calculator.equation) - 1])
         self.canvas = Canvas(self.CWidgets)
         self.canvas.resize(450, 275)
-        self.canvas.surface(-3, 3, 0.1, fct, "g")
+        print(int(Calculator.equation))
+        self.canvas.surface(-3, 3, 0.1, fct, self.functions[int(Calculator.equation) - 1])
 
         self.fct_comment = QLabel(self.CWidgets)
         self.fct_comment.setText("Lorem ipsum dolor sit amet. Et ducimus omnis nam dolores \n"

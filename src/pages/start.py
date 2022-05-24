@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QLineEdit, QGraphicsDr
 
 from src.maths.functions import Functions
 from src.datas.text2svg import Tex2Svg
+from src.pages.calc import Calculator
 
 
 class StartWin(object):
@@ -101,6 +102,13 @@ class StartWin(object):
         self.method.resize(250, 45)
         self.method.setText(self.lang["change-method"])
         self.method.setProperty("type", 2)
+        self.method.hide()
+        # special function
+
+        self.spe_fct = QPushButton(self.start_widgets)
+        self.spe_fct.resize(250, 45)
+        self.spe_fct.setText(self.lang["spe-function"])
+        self.spe_fct.setProperty("type", 2)
 
 
         self.intervalx.setGraphicsEffect(shadow)
@@ -127,6 +135,13 @@ class StartWin(object):
             self.fct.set_equation(self.i)
             print(f"Choosen equation: {self.i}")
 
+        if self.i != 1:
+            self.spe_fct.hide()
+            self.method.show()
+        else:
+            self.spe_fct.show()
+            self.method.hide()
+
         svgText = Tex2Svg(self.formula[str(self.i)])
         self.viewer.load(svgText.tex2svg())
 
@@ -146,8 +161,8 @@ class StartWin(object):
             check = [False, False]
 
             try:
-                min_x = int(self.intervalx.text().split("-")[0])
-                max_x = int(self.intervalx.text().split("-")[1])
+                min_x = int(self.intervalx.text().split(" ")[0])
+                max_x = int(self.intervalx.text().split(" ")[1])
                 print(f"X Interval: [{min_x} ; {max_x}]")
                 check[0] = True
                 self.intervalx.setStyleSheet("QLineEdit{border-color: orange;};")
@@ -155,8 +170,8 @@ class StartWin(object):
                 self.intervalx.setStyleSheet("QLineEdit{border-color: red;};")
 
             try:
-                min_y = int(self.intervaly.text().split("-")[0])
-                max_y = int(self.intervaly.text().split("-")[1])
+                min_y = int(self.intervaly.text().split(" ")[0])
+                max_y = int(self.intervaly.text().split(" ")[1])
                 print(f"Y Interval: [{min_y} ; {max_y}]")
                 check[1] = True
                 self.intervaly.setStyleSheet("QLineEdit{border-color: orange;};")
@@ -164,9 +179,22 @@ class StartWin(object):
                 self.intervaly.setStyleSheet("QLineEdit{border-color: red;};")
 
             if check == [True, True]:
-                self.intervaly.setStyleSheet("QLineEdit{border-color: orange;};")
-                self.intervalx.setStyleSheet("QLineEdit{border-color: orange;};")
-                self.verif = True
+
+                if min_x < max_x and min_y < max_y:
+                    self.intervaly.setStyleSheet("QLineEdit{border-color: orange;};")
+                    self.intervalx.setStyleSheet("QLineEdit{border-color: orange;};")
+
+                    Calculator.intervalx = [min_x, max_x]
+                    Calculator.intervaly = [min_x, max_x]
+                    Calculator.equation = self.i
+                    print(Calculator.equation)
+                    self.verif = True
+
+                else:
+                    self.intervalx.setStyleSheet("QLineEdit{border-color: red;};")
+                    self.intervaly.setStyleSheet("QLineEdit{border-color: red;};")
+
+
 
 
 
@@ -188,6 +216,8 @@ class StartWin(object):
         self.intervaly.move(int(self.width * 0.7), int(self.height * 0.55))
 
         self.method.move(int(self.width * 0.6), int(self.height * 0.7))
+
+        self.spe_fct.move(int(self.width * 0.6), int(self.height * 0.7))
 
         self.home_bt.move(int(self.width * 0.85), int(self.height * 0.9))
 

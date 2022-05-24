@@ -9,6 +9,7 @@ from src.pages.config import IVWindow
 from src.pages.start import StartWin
 from src.pages.home import Main
 from src.lang.language import Language
+from src.pages.spe_fct import SpeFct
 
 
 class GUI(QMainWindow):
@@ -27,6 +28,7 @@ class GUI(QMainWindow):
         self.uiMainWindow = Main()
         self.ui_start = StartWin()
         self.ui_calculator = Calculator()
+        self.ui_spefct = SpeFct()
         self.ui_conf = IVWindow()
         self.startMainWindow()
 
@@ -53,6 +55,7 @@ class GUI(QMainWindow):
         self.ui_start.home_bt.clicked.connect(self.startMainWindow)
         self.ui_start.language.clicked.connect(self.change_language)
         self.ui_start.method.clicked.connect(self.load_calc)
+        self.ui_start.spe_fct.clicked.connect(self.load_spe_fct)
         self.page = "start"
         self.show()
 
@@ -66,8 +69,19 @@ class GUI(QMainWindow):
             self.ui_calculator.setupUI(self)
             self.ui_calculator.back_bt.clicked.connect(self.load_start)
             self.ui_calculator.language.clicked.connect(self.change_language)
+
             self.page = "calc"
             self.show()
+
+    def load_spe_fct(self):
+
+        self.ui_spefct.lang = self.language.get_lang()
+        self.ui_spefct.setupUI(self)
+        self.ui_spefct.back_bt.clicked.connect(self.load_start)
+        self.ui_spefct.language.clicked.connect(self.change_language)
+
+        self.page = "Special Function"
+        self.show()
 
     def load_config(self):
         '''

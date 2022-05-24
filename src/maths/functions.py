@@ -29,13 +29,13 @@ class Functions:
         #          Equation 1
         # ------------------------
 
-    def g(self):
+    def f(self):
         return self.x1**2 + self.x2**4 + 2 * self.x2**2
 
-    def g_der(self):
+    def f_der(self):
         return np.array([2 * self.x1, 4 * self.x2**3 + 4 * self.x2])
 
-    def H_g(self):
+    def H_f(self):
         return np.array([[2, 0], [0, 12 * self.x2**2 + 4]])
 
         # ------------------------
@@ -100,3 +100,18 @@ class Functions:
             [2 * self.x2**3, 6 * self.x1 * self.x2**2],
             [6 * self.x1 * self.x2**2, 6 * self.x1**2 * self.x2],
         ])
+
+       # ------------------------
+        #          Equation Speciale
+        # ------------------------
+
+    def s(self):
+        return (self.x1 ** 2 + self.x2 - 11) ** 2 + (self.x1 + self.x2 ** 2 - 7) ** 2
+
+    def s_der(self):
+        return np.array([4 * self.x1 ** 3 + 2 * self.x2 ** 2 - 42 * self.x1 + 4 * self.x1 * self.x2 - 14,
+                         4 * self.x2 ** 3 + 2 * self.x1 ** 2 - 26 * self.x2 + 4 * self.x1 * self.x2 - 22])
+
+    def H_s(self):
+        return np.array([[12 * self.x1 ** 2 + 4 * self.x2 - 42, 4 * self.x1 + 4 * self.x2],
+                         [4 * self.x1 + 4 * self.x2, 4 * self.x1 * self.x2 ** 2 - 26 + 8 * self.x2 ** 2]])
