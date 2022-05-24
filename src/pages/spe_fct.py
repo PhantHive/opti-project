@@ -106,13 +106,36 @@ class SpeFct(object):
         self.graph_change.setProperty("type", 2)
 
         self.fct_comment = QLabel(self.CWidgets)
-        self.fct_comment.setText("Lorem ipsum dolor sit amet. Et ducimus omnis nam dolores \n"
-                                 "quaerat quo perferendis soluta. \n"
-                                 "Ad vero culpa vel placeat unde hic quia veniam et nihil ipsa. \n"
-                                 "Et harum harum aut voluptatibus dolorum et laborum aperiam \n"
-                                 "non velit repellendus.")
-        self.fct_comment.resize(550, 750)
-        self.fct_comment.setProperty("type", 2)
+        self.fct_comment.setText("Pour l'étude de cette fonction nous allons commencer par représenter en 3D "
+                                "\nla fonction à étudier (voir sur le coté) ."
+                                "\nOn peut remarquer et supposer qu'à l'infini la fonction tend elle aussi vers l'infini ."
+                                "\nOn remarque également que nous devons trouver au moins "
+                                "\nun point critique minimal ."
+                                "\n\n\nNous allons maintenant définir le gradient et la hessienne d'une fonction." 
+                                "\nLe gradient d'une fonction se représente sous la forme d'un vecteur "
+                                "\ndont les composant sont les dérivés par rapport à la composante de l'indice." 
+                                "\nLa hessienne est quand à elle un matrice carré dont les composantes sont "
+                                "\nles dérivés du gradient par rapport à la composante de l'indice"
+                                "\n\nDans le complément (.pdf), nous avons fait tous les calculs analytiques "
+                                "\net nous avons remarqué que la détermination des points critiques "
+                                "\npar un système d'équations était impossible."
+                                "\n\n\nMaintenant nous allons nous concentrer sur la représentation graphique "
+                                "\nde la fonction passant d'un intervalle [-30,30] à un intervalle [-5,5]."
+                                "\nOn va pouvoir repérer neuf points critiques qui nous semblent cohérents "
+                                "\net on va estimer leurs valeurs grâce à la méthode du gradient de Newton "
+                                "\nqui est la plus précise de toutes les méthodes. "
+                                "\nSi nous n'arrivons pas à déterminer leurs valeurs, on va utiliser "
+                                "\nla méthode du gradient préconditionné à pas optimal." 
+                                "\n\nGrâce aux différentes méthodes citées auparavant, on a pu déterminer "
+                                "\nles différents points critiques qui sont relativement proche de nos estimations. "
+                                "\nLa nature des points critiques (Max/Min/Point Scelle) se détermine "
+                                "\ngrâce aux contours qui sont affichés sous la courbe. "
+                                "\nSi nous distinguons une ellipse, c'est une max/min "
+                                "\net si nous distinguons une hyperbole, c'est un point scelle. "
+                                "\nPour conclure sur cette partie, nous pouvons calculer le minimum global qui est x*(3,2).")
+
+        self.fct_comment.resize(615, 750)
+        self.fct_comment.setProperty("type", 3)
 
         # connect btn
         self.graph_change.clicked.connect(self.change_3d_graph)

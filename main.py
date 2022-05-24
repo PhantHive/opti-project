@@ -5,7 +5,6 @@ from PyQt5.QtWidgets import QPushButton, QApplication, QMainWindow
 import sys
 
 from src.pages.calc import Calculator
-from src.pages.config import IVWindow
 from src.pages.start import StartWin
 from src.pages.home import Main
 from src.lang.language import Language
@@ -29,7 +28,6 @@ class GUI(QMainWindow):
         self.ui_start = StartWin()
         self.ui_calculator = Calculator()
         self.ui_spefct = SpeFct()
-        self.ui_conf = IVWindow()
         self.startMainWindow()
 
     def startMainWindow(self):
@@ -40,7 +38,7 @@ class GUI(QMainWindow):
         self.uiMainWindow.setupUI(self)
         # Connect buttons to the page (ivPage, ipPage ...)
         self.uiMainWindow.start_bt.clicked.connect(self.load_start)
-        self.uiMainWindow.conf_bt.clicked.connect(self.load_config)
+        #self.uiMainWindow.conf_bt.clicked.connect(self.load_config)
         self.uiMainWindow.language.clicked.connect(self.change_language)
         self.page = "main"
         self.show()
@@ -88,7 +86,7 @@ class GUI(QMainWindow):
         :return: the configuration menu
         '''
 
-        self.ui_conf.setupUI(self)
+        #self.ui_conf.setupUI(self)
         # self.ui_conf.homeBt.clicked.connect(self.startMainWindow)
         self.page = "config"
         self.show()
@@ -110,6 +108,12 @@ class GUI(QMainWindow):
             else:
                 self.language = Language("fr")
             self.load_calc()
+        elif self.page == "Special Function":
+            if self.ui_spefct.lang["language"] == "fr":
+                self.language = Language("en")
+            else:
+                self.language = Language("fr")
+            self.load_spe_fct()
         else:
             if self.ui_start.lang["language"] == "fr":
                 self.language = Language("en")

@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QVBoxLayout, QRadioBut
     QGraphicsDropShadowEffect
 from src.canvas.Canvas import Canvas
 from src.maths.functions import Functions
+from src.maths.gradient import Gradient
 from src.maths.graph import Graph
 
 
@@ -29,8 +30,13 @@ class Calculator(object):
         self.back_bt = None
 
         self.functions = ["f", "Rosenbrock", "g1", "g2", "g3"]
+        self.fct_der = ["f_der", "Ros_der", "g1_der", "g2_der", "g3_der"]
+        self.fct_h = ["H_f", "H_Ros", "H_g1", "H_g2", "H_g3"]
 
-        self.onlyInt = QIntValidator()
+        self.x0_1 = np.array([1.2, 1.2]).T
+        self.pas_1 = 10 ** -2
+        self.grad = Gradient(self.x0_1, self.pas_1, 10 ** -4, 10 ** 5, self.fct_der[int(Calculator.equation) - 1], self.fct_h[int(Calculator.equation) - 1])
+        self.x, xlist, i = self.grad.gradientPasFixe()
 
     def setupUI(self, Calc):
         Calc.setGeometry(500, 100, 1200, 600)
@@ -42,42 +48,40 @@ class Calculator(object):
         shadow.setBlurRadius(25)
         shadow.setOffset(1, 1)
 
-        print("c", Calculator.equation)
 
         self.CWidgets = QWidget(Calc)
         self.ChoiceWidgets = QWidget(self.CWidgets)
 
         self.layout = QVBoxLayout(self.ChoiceWidgets)
-        self.method_1 = QRadioButton("Gradient 1")
+
+        self.method_1 = QRadioButton("Gradient Pas Fixe")
         self.method_1.setChecked(True)
 
-        self.method_2 = QRadioButton("Gradient 2")
+        self.method_2 = QRadioButton("Gradient Pas Optimal")
 
-        self.method_3 = QRadioButton("Gradient 3")
+        #self.method_3 = QRadioButton("Gradient 3")
 
         self.layout.addWidget(self.method_1)
         self.layout.addWidget(self.method_2)
-        self.layout.addWidget(self.method_3)
+        #self.layout.addWidget(self.method_3)
 
         self.method_1.toggled.connect(lambda: self.btn_state(self.method_1))
         self.method_2.toggled.connect(lambda: self.btn_state(self.method_2))
-        self.method_3.toggled.connect(lambda: self.btn_state(self.method_3))
+        #self.method_3.toggled.connect(lambda: self.btn_state(self.method_3))
 
         self.method_1.setGraphicsEffect(shadow)
         self.method_2.setGraphicsEffect(shadow)
-        self.method_3.setGraphicsEffect(shadow)
+        #self.method_3.setGraphicsEffect(shadow)
 
         self.layout.setSpacing(50)
 
         Calc.setLayout(self.layout)
 
-        # ligne
-        '''painter = QPainter(Calculator)
-        pen = QPen(Qt.white, 5)
-        pixmap = QPixmap("./src/image/bg.jpg")
-        painter.drawPixmap(Calculator, pixmap)
-        painter.setPen(pen)
-        painter.drawLine(100, 100, 100, 200)'''
+        # extremum
+        self.extr = QLabel(self.CWidgets)
+        self.extr.setText(f"x = {self.x}")
+        self.extr.resize(400, 200)
+        self.extr.setProperty("type", 1)
 
         self.entry_widgets()
         self.result_widgets()
@@ -87,20 +91,26 @@ class Calculator(object):
 
     def btn_state(self, btn):
 
-        if btn.text() == "method_1":
+        if btn.text() == "Gradient Pas Fixe":
             if btn.isChecked() == True:
                 self.method_2.isChecked(False)
-                self.method_3.isChecked(False)
+                self.x, xlist, i = self.grad.gradientPasFixe()
+                #self.method_3.isChecked(False)
+                self.extr.setText(f"x = {self.x}")
 
-        if btn.text() == "method_2":
+        if btn.text() == "Gradient Pas Optimal":
             if btn.isChecked() == True:
                 self.method_1.isChecked(False)
-                self.method_3.isChecked(False)
+                self.x, xlist, i = self.grad.gradientPasOptimal()
+                self.extr.setText(f"x = {self.x}")
 
-        if btn.text() == "method_3":
+                #self.method_3.isChecked(False)
+
+
+        '''if btn.text() == "method_3":
             if btn.isChecked() == True:
                 self.method_1.isChecked(False)
-                self.method_2.isChecked(False)
+                self.method_2.isChecked(False)'''
 
     def entry_widgets(self):
 
@@ -140,6 +150,7 @@ class Calculator(object):
 
     def move_widgets(self):
 
+        print(self.x)
         self.language.move(int(self.width * 0.85), int(self.height * 0.01))
 
         self.back_bt.move(int(self.width * 0.78), int(self.height * 0.97))
@@ -149,6 +160,7 @@ class Calculator(object):
         self.fct_comment.move(int(self.width * 0.45), int(self.height * 0.7))
 
         self.ChoiceWidgets.move(int(self.width * 0.15), int(self.height * 0.4))
+        self.extr.move(int(self.width * 0.05), int(self.height * 0.55))
 
     def calculate(self):
 

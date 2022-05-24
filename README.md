@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="./src/image/app.png">
+<img src="./src/image/app2.png">
 
 <h2 align="center"> 
   | Math Application |
@@ -18,9 +18,13 @@
 ## Overview:
 This app resolve a few optimization problems using numpy and pyqt5.
 
-### Options
+### Installation
 
-> None for now
+> pip install -r requirements.txt
+
+### Launch the app
+
+> python3 -m main
 
 
 ### Built With
@@ -32,7 +36,8 @@ This app resolve a few optimization problems using numpy and pyqt5.
 ### Acknowledgement
 
 > Supervised by Mr.Bletzecker (teacher at IPSA)
-> Borg Corentin (https://github.com/Tyhuki) ; Evan ; Wenceslas
+
+> Corentin (https://github.com/Tyhuki) ; Evan ; Wenceslas
 
 > Project Link: [https://github.com/PhantHive/opti_project](https://github.com/PhantHive/opti_project/)
 

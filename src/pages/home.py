@@ -44,20 +44,20 @@ class Main(object):
         self.start_bt.resize(125, 55)
         self.start_bt.move((width - self.start_bt.width()) // 2, int(height * 0.3))
 
-        # Config Page
+        '''# Config Page
         self.conf_bt = QPushButton(self.mainWidget)
         self.conf_bt.setText(self.lang["config"])
         self.conf_bt.resize(125, 55)
-        self.conf_bt.move((width - self.conf_bt.width()) // 2, int(height * 0.5))
+        self.conf_bt.move((width - self.conf_bt.width()) // 2, int(height * 0.5))'''
 
         # Credit Page
         self.credit_bt = QPushButton(self.mainWidget)
         self.credit_bt.setText(self.lang["credit"])
         self.credit_bt.resize(125, 55)
-        self.credit_bt.move((width - self.conf_bt.width()) // 2, int(height * 0.7))
+        self.credit_bt.move((width - self.start_bt.width()) // 2, int(height * 0.7))
 
         self.start_bt.setProperty("type", 1)
-        self.conf_bt.setProperty("type", 1)
+        #self.conf_bt.setProperty("type", 1)
         self.credit_bt.setProperty("type", 1)
         self.language.setProperty("type", 3)
 

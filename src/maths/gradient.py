@@ -1,4 +1,5 @@
 import numpy as np
+from src.maths.functions import Functions
 
 class Gradient:
 

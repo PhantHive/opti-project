@@ -25,6 +25,14 @@ QLabel[type="2"]{
     border-radius: 5%;
 }
 
+QLabel[type="3"]{
+    font-size: 19px;
+    color: #ffffff;
+    border: 2px solid;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-color: orange;
+    border-radius: 5%;
+}
 
 
 

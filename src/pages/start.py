@@ -71,11 +71,12 @@ class StartWin(object):
         self.intervalx = QLineEdit(self.start_widgets)
         self.intervalx.setPlaceholderText(self.lang["intervalx-entry"])
         self.intervalx.resize(250, 45)
+        self.intervalx.hide()
         
         self.intervaly = QLineEdit(self.start_widgets)
         self.intervaly.setPlaceholderText(self.lang["intervaly-entry"])
         self.intervaly.resize(250, 45)
-
+        self.intervaly.hide()
 
         svgText = Tex2Svg(self.formula["1"])
         self.viewer = QtSvg.QSvgWidget(self.start_widgets)
@@ -138,9 +139,13 @@ class StartWin(object):
         if self.i != 1:
             self.spe_fct.hide()
             self.method.show()
+            self.intervalx.show()
+            self.intervaly.show()
         else:
             self.spe_fct.show()
             self.method.hide()
+            self.intervalx.hide()
+            self.intervaly.hide()
 
         svgText = Tex2Svg(self.formula[str(self.i)])
         self.viewer.load(svgText.tex2svg())

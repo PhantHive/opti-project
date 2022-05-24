@@ -1,5 +1,5 @@
 {
-  "1": "$f(x) = $ \t $ ({x_1}^2 + x_2 - 11)^2 + (x_1 + {x_2}^2 - 7)^2 $ \n\n $f'(x) = $ \t $ 4{x_1}^3 + 2{x_2}^2 -42x_1 + 4{x_1}{x_2} - 14$ \n\t\t $ 4{x_2}^3 + 2{x_1}^2 - 26x_2 + 4{x_1}{x_2} - 22$ \n\n $H_f = $ \t $ 12{x_1}^2 + 4{x_2} - 42 \\quad\\quad 4{x_1} + 4{x_2} $ \n\t\t $ 4{x_1} + 4{x_2} \\quad\\quad 4{x_1}{x_2}^2 - 26 + 8{x_2}^2 $ ",
+  "1": "$f(x) = $ \t $ ({x_1}^2 + x_2 - 11)^2 + (x_1 + {x_2}^2 - 7)^2 $ \n\n $f'(x) = $ \t $\\left\\lceil 4{x_1}^3 + 2{x_2}^2 -42x_1 + 4{x_1}{x_2} - 14 \\rceil\\right.$ \n\t\t $\\left\\lfloor 4{x_2}^3 + 2{x_1}^2 - 26x_2 + 4{x_1}{x_2} - 22 \\rfloor\\right.$ \n\n $H_f = $ \t $\\left\\lceil\\; 12{x_1}^2 + 4{x_2} - 42 \\hspace{5} 4{x_1} + 4{x_2} \\hspace{1}\\;\\rceil\\right.$ \n\t\t $\\left\\lfloor\\; 4{x_1} + 4{x_2} \\hspace{5} 4{x_1}{x_2}^2 - 26 + 8{x_2}^2 \\;\\rfloor\\right.$ ",
 
   "2": "$f(x) =$ \t $ {x_1}^2 + {x_2}^4 + 2{x_2}^2$  \n\n $f'(x) =$ \t $\\left\\lceil\\hspace{2}2{x_1}\\hspace{2}\\rceil\\right.$ \n\t\t  $\\left\\lfloor\\;4{x_2}^3 + 4{x_2}\\;\\rfloor\\right.$ \n\n $H_f = $ \t $\\left\\lceil\\; 2 \\right. \\hspace{4} \\left. 0\\hspace{2}\\;\\rceil\\right.$ \n\t\t $\\left\\lfloor\\; 0 \\right. \\hspace{2} \\left. 12{x_2}^2 + 4\\rfloor\\right.$",
 

@@ -1,5 +1,5 @@
 import numpy as np
-from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt, cm
 import matplotlib.ticker as mtick
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
@@ -22,6 +22,7 @@ class Canvas(FigureCanvas):
         dark_style()
 
         self.fig, self.ax = plt.subplots(dpi=77)
+
         super().__init__(self.fig)
         self.setParent(parent)
         self.ax.grid(c="#003740")
@@ -48,14 +49,14 @@ class Canvas(FigureCanvas):
         xx, yy = np.meshgrid(x, y)
         ax = Axes3D(self.fig)
         self.f_class.set_x(xx, yy)
-        ax.plot_surface(xx, yy, self.fct())
+        ax.plot_surface(xx, yy, self.fct(), cmap=cm.coolwarm)
 
     def contour(self, x, y, h, f_class, fct, arg):
         self.ax.clear()
         a = int(x - 1)
-        b = int(x + 1)
+        b = a + 2
         c = int(y - 1)
-        d = int(y + 1)
+        d = c + 2
 
         self.f_class = f_class
         self.fct = getattr(self.f_class, fct)
