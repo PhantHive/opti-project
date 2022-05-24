@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QPushButton, QApplication, QMainWindow, QLabel, QSta
     QWidget, QListWidget, QStackedLayout
 import sys
 
+from src.pages.calc import Calculator
 from src.pages.config import IVWindow
 from src.pages.start import StartWin
 from src.pages.home import Main
@@ -25,6 +26,7 @@ class GUI(QMainWindow):
 
         self.uiMainWindow = Main()
         self.ui_start = StartWin()
+        self.ui_calculator = Calculator()
         self.ui_conf = IVWindow()
         self.startMainWindow()
 
@@ -50,6 +52,20 @@ class GUI(QMainWindow):
         self.ui_start.setupUI(self)
         self.ui_start.home_bt.clicked.connect(self.startMainWindow)
         self.ui_start.language.clicked.connect(self.change_language)
+        self.ui_start.method.clicked.connect(self.load_calc)
+        self.page = "start"
+        self.show()
+
+    def load_calc(self):
+        '''
+        :return: the equation selector menu
+        '''
+
+        self.ui_calculator.lang = self.language.get_lang()
+        self.ui_calculator.setupUI(self)
+        self.ui_start.home_bt.clicked.connect(self.startMainWindow)
+        #self.ui_calculator.home_bt.clicked.connect(self.startMainWindow)
+        #self.ui_calculator.language.clicked.connect(self.change_language)
         self.page = "start"
         self.show()
 
