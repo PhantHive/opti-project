@@ -7,6 +7,8 @@ from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QVBoxLayout, QRadioButton, \
     QGraphicsDropShadowEffect
 from src.canvas.Canvas import Canvas
+from src.maths.functions import Functions
+from src.maths.graph import Graph
 
 
 class Calculator(object):
@@ -104,8 +106,12 @@ class Calculator(object):
 
 
         # function graph representation
+        fct = Functions(None, None)
+        # graphical part
+
         self.canvas = Canvas(self.CWidgets)
         self.canvas.resize(450, 275)
+        self.canvas.surface(-3, 3, 0.1, fct, "g")
 
         self.fct_comment = QLabel(self.CWidgets)
         self.fct_comment.setText("Lorem ipsum dolor sit amet. Et ducimus omnis nam dolores \n"
