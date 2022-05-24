@@ -37,6 +37,7 @@ class Gradient:
             i += 1
             self.fct.set_x(x[0], x[1])
             x_list.append(x.copy())
+
         return x, x_list, i
 
     def gradientPasOptimal(self):
@@ -52,6 +53,7 @@ class Gradient:
             i += 1
             self.fct.set_x(x[0], x[1])
             x_list.append(x)
+
         return x, x_list, i
 
 
@@ -63,7 +65,7 @@ if __name__ == '__main__':
 
     x0_1 = np.array([1.2, 1.2]).T
     pas_1 = 10 ** -2
-    grad = Gradient(x0_1, pas_1, 10 ** -4, 10 ** 5, "g_der", "H_g")
+    grad = Gradient(x0_1, pas_1, 10 ** -4, 10 ** 5, "f_der", "H_f")
 
 
     Sol1 = grad.gradientPasFixe()
@@ -73,6 +75,6 @@ if __name__ == '__main__':
 
     fct = Functions(None, None)
     # graphical part
-    gr = Graph(-3, 3, 0.1, fct, "g")
+    gr = Graph(-3, 3, 0.1, fct, "f")
     gr.Surface()
     gr.Lignes_niveau([i for i in range(12)])

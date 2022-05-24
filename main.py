@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QPushButton, QApplication, QMainWindow
 import sys
 
 from src.pages.calc import Calculator
+from src.pages.credit import Credit
 from src.pages.start import StartWin
 from src.pages.home import Main
 from src.lang.language import Language
@@ -28,6 +29,7 @@ class GUI(QMainWindow):
         self.ui_start = StartWin()
         self.ui_calculator = Calculator()
         self.ui_spefct = SpeFct()
+        self.ui_credit = Credit()
         self.startMainWindow()
 
     def startMainWindow(self):
@@ -40,6 +42,7 @@ class GUI(QMainWindow):
         self.uiMainWindow.start_bt.clicked.connect(self.load_start)
         #self.uiMainWindow.conf_bt.clicked.connect(self.load_config)
         self.uiMainWindow.language.clicked.connect(self.change_language)
+        self.uiMainWindow.credit_bt.clicked.connect(self.load_credit)
         self.page = "main"
         self.show()
 
@@ -91,6 +94,16 @@ class GUI(QMainWindow):
         self.page = "config"
         self.show()
 
+    def load_credit(self):
+
+        self.ui_credit.lang = self.language.get_lang()
+        self.ui_credit.setupUI(self)
+        self.ui_credit.back_bt.clicked.connect(self.startMainWindow)
+        self.ui_credit.language.clicked.connect(self.change_language)
+        self.page = "credit"
+        self.show()
+
+
     def change_language(self):
         '''
         :return: the corresponding dictionary of the selected language.
@@ -114,6 +127,12 @@ class GUI(QMainWindow):
             else:
                 self.language = Language("fr")
             self.load_spe_fct()
+        elif self.page == "credit":
+            if self.ui_credit.lang["language"] == "fr":
+                self.language = Language("en")
+            else:
+                self.language = Language("fr")
+            self.load_credit()
         else:
             if self.ui_start.lang["language"] == "fr":
                 self.language = Language("en")

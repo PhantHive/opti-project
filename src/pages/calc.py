@@ -36,7 +36,8 @@ class Calculator(object):
         self.x0_1 = np.array([1.2, 1.2]).T
         self.pas_1 = 10 ** -2
         self.grad = Gradient(self.x0_1, self.pas_1, 10 ** -4, 10 ** 5, self.fct_der[int(Calculator.equation) - 1], self.fct_h[int(Calculator.equation) - 1])
-        self.x, xlist, i = self.grad.gradientPasFixe()
+        self.x_fixe, xlist, i = self.grad.gradientPasFixe()
+        self.x_opti, xlist2, i2 = self.grad.gradientPasOptimal()
 
     def setupUI(self, Calc):
         Calc.setGeometry(500, 100, 1200, 600)
@@ -79,8 +80,8 @@ class Calculator(object):
 
         # extremum
         self.extr = QLabel(self.CWidgets)
-        self.extr.setText(f"x = {self.x}")
-        self.extr.resize(400, 200)
+        self.extr.setText(f"x = {self.x_fixe}")
+        self.extr.resize(450, 50)
         self.extr.setProperty("type", 1)
 
         self.entry_widgets()
@@ -91,18 +92,21 @@ class Calculator(object):
 
     def btn_state(self, btn):
 
+
         if btn.text() == "Gradient Pas Fixe":
+            self.extr.setText(f"x = {self.x_fixe}")
+
             if btn.isChecked() == True:
-                self.method_2.isChecked(False)
-                self.x, xlist, i = self.grad.gradientPasFixe()
+                self.method_2.setChecked(False)
+
+
                 #self.method_3.isChecked(False)
-                self.extr.setText(f"x = {self.x}")
 
         if btn.text() == "Gradient Pas Optimal":
+            self.extr.setText(f"x = {self.x_opti}")
+
             if btn.isChecked() == True:
-                self.method_1.isChecked(False)
-                self.x, xlist, i = self.grad.gradientPasOptimal()
-                self.extr.setText(f"x = {self.x}")
+                self.method_1.setChecked(False)
 
                 #self.method_3.isChecked(False)
 
@@ -131,7 +135,8 @@ class Calculator(object):
         self.canvas = Canvas(self.CWidgets)
         self.canvas.resize(450, 275)
         print(int(Calculator.equation))
-        self.canvas.surface(-3, 3, 0.1, fct, self.functions[int(Calculator.equation) - 1])
+        self.canvas.surface(Calculator.intervalx[0], Calculator.intervalx[1], 0.1, fct, self.functions[int(Calculator.equation) - 1],
+                            Calculator.intervaly[0], Calculator.intervaly[1])
 
         self.fct_comment = QLabel(self.CWidgets)
         self.fct_comment.setText("Lorem ipsum dolor sit amet. Et ducimus omnis nam dolores \n"
@@ -150,7 +155,7 @@ class Calculator(object):
 
     def move_widgets(self):
 
-        print(self.x)
+
         self.language.move(int(self.width * 0.85), int(self.height * 0.01))
 
         self.back_bt.move(int(self.width * 0.78), int(self.height * 0.97))
@@ -160,7 +165,7 @@ class Calculator(object):
         self.fct_comment.move(int(self.width * 0.45), int(self.height * 0.7))
 
         self.ChoiceWidgets.move(int(self.width * 0.15), int(self.height * 0.4))
-        self.extr.move(int(self.width * 0.05), int(self.height * 0.55))
+        self.extr.move(int(self.width * 0.05), int(self.height * 0.7))
 
     def calculate(self):
 
