@@ -1,6 +1,5 @@
-Docstring sur les fonctions et graphs 
+Docstring sur les fonctions et graphs
 
-inserer boutons 
+inserer boutons
 
 voir comment faire pour le choix des fonctions à utiliser
-
