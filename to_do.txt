@@ -1,5 +1,17 @@
-Docstring sur les fonctions et graphs
+== TO DO ==
 
-inserer boutons
 
-voir comment faire pour le choix des fonctions à utiliser
+/!\ IMPORTANT - must be done before mid of July
+
+-> Graph explanation
+-> Complete gradient method resolution widgets
+
+
+/!\ Lower priority
+
+-> Configuration button
+
+
+
+
+
